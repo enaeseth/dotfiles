@@ -1,0 +1,32 @@
+[user]
+	name = Eric Naeseth
+	email = eric@naeseth.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+[alias]
+	ci = commit
+	co = checkout
+	branches = branch
+	b = branch
+	s = status
+	cb = !git branch | egrep ^\\\\* | sed -e "'s/^\\* //'"
+	lol = log --pretty=oneline
+	lm = log --pretty=oneline master..HEAD
+	ln = log --pretty=oneline next..HEAD
+	lu = !git log --pretty=oneline origin/$(git cb)..HEAD
+	lastweek = !git shortlog --after=\"`date -j -v-1w '+%b %d %Y'`\"
+	update = !git stash && git pull --rebase && git stash pop
+	crush = rebase -i --autosquash
+	ff = merge --ff-only
+	ship = !git pull --rebase && git push
+	d = diff
+	di = diff --cached
+[github]
+	user = enaeseth
+[merge]
+	tool = opendiff
+[core]
+	editor = mvim -f
