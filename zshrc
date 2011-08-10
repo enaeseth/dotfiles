@@ -25,5 +25,9 @@ plugins=(git ruby github brew pip osx)
 
 source $ZSH/oh-my-zsh.sh
 
+# All hail MacVim
+export EDITOR="mvim -f"
+export VISUAL="$EDITOR"
+
 # Use color and human-readable filesizes when I ls -l
 alias ls="ls -Gh"
