@@ -24,9 +24,7 @@ task :install do
         case answer
         when 'a', 'y'
           replace_all = true if answer == 'a'
-
-          system %Q{rm -rf "#{dest_path}"}
-          install_file filename, dest_filename, dest_path
+          replace_file filename, dest_filename, dest_path
         when 'q'
           exit
         else
@@ -43,6 +41,11 @@ def prompt(question)
   print "#{question} "
   STDOUT.flush
   STDIN.gets.chomp
+end
+
+def replace_file(source_filename, dest_filename, dest_path)
+  system %Q{rm -rf "#{dest_path}"}
+  install_file filename, dest_filename, dest_path
 end
 
 def install_file(source_filename, dest_filename, dest_path)
