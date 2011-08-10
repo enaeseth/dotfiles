@@ -25,4 +25,5 @@ plugins=(git ruby github brew pip osx)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
+# Use human-readable filesizes when I ls -l
+alias ls="ls -h"
