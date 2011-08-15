@@ -45,7 +45,7 @@ end
 
 def replace_file(source_filename, dest_filename, dest_path)
   system %Q{rm -rf "#{dest_path}"}
-  install_file filename, dest_filename, dest_path
+  install_file source_filename, dest_filename, dest_path
 end
 
 def install_file(source_filename, dest_filename, dest_path)
