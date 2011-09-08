@@ -13,7 +13,7 @@ alias ls="ls -Gh"
 
 # Thumbtack path aliases
 
-export PATH="/src/thumbtack/python/thumbtack/tools:/src/thumbtack/auto_uploader:$PATH"
+export PATH="$HOME/bin:/src/thumbtack/python/thumbtack/tools:/src/thumbtack/auto_uploader:$PATH"
 
 export TT=/src/thumbtack
 export w=/src/thumbtack/website
