@@ -1,6 +1,6 @@
 [user]
 	name = Eric Naeseth
-	email = <%= prompt('Git committer email:') %>
+	email = <%= prompt('Git committer email:', `git config --global user.email`) %>
 [color]
 	diff = auto
 	status = auto
@@ -27,7 +27,7 @@
 	cp = cherry-pick
 [github]
 	user = enaeseth
-	token = <%= prompt('GitHub API token:') %>
+	token = <%= prompt('GitHub API token:', `git config --global github.token`) %>
 [merge]
 	tool = opendiff
 [core]
