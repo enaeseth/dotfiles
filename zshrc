@@ -1,6 +1,7 @@
 # oh-my-zsh configuration
 ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="eric-remote"
+DISABLE_AUTO_UPDATE="true"
 plugins=(git ruby github brew pip osx)
 source $ZSH/oh-my-zsh.sh
 
