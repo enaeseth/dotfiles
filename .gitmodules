@@ -64,3 +64,6 @@
 [submodule "vim/bundle/vim-indexed-search"]
 	path = vim/bundle/vim-indexed-search
 	url = git://github.com/henrik/vim-indexed-search.git
+[submodule "vim/bundle/CamelCaseMotion"]
+	path = vim/bundle/CamelCaseMotion
+	url = git://github.com/bkad/CamelCaseMotion.git
