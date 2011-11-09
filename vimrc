@@ -88,6 +88,7 @@ autocmd FileType yaml setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType ruby setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType coffee setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType css setlocal expandtab shiftwidth=2 softtabstop=2
+autocmd FileType gitcommit setlocal expandtab shiftwidth=4 softtabstop=4 textwidth=70
 
 set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
@@ -97,6 +98,7 @@ set backup                        " enable backups
 if has('gui_running')
 	" Turn off GUI elements
 	set go-=T
+	set guifont=Menlo\ Regular:h12
 endif
 
 let mapleader = ","
@@ -182,8 +184,8 @@ nnoremap <leader>ft Vatzf
 nnoremap <leader>q gqip
 nnoremap <leader>v V`]
 
-nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <leader>W <C-w>s<C-w>j
+nnoremap <leader><right> <C-w>v<C-w>l
+nnoremap <leader><down> <C-w>s<C-w>j
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
