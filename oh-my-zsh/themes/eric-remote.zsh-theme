@@ -15,7 +15,8 @@ function svn_prompt_info {
     echo "%{$fg_no_bold[yellow]%}$rev$suffix %{$reset_color%}"
 }
 
-if [ "$(hostname | cut -d . -f 2-)" != "local" ]; then
+HOSTNAME_TLD="$(hostname | cut -d . -f 2-)"
+if [ "$HOSTNAME_TLD" != "local" && "$HOSTNAME_TLD" != "lan" ]; then
     HOSTNAME_PROMPT='%{$fg_bold[red]%}%m%{$reset_color%}'
 else
     HOSTNAME_PROMPT='%{$fg[cyan]%}%m'
