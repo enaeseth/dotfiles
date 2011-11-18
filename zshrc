@@ -12,6 +12,10 @@ export VISUAL="$EDITOR"
 # Use color and human-readable filesizes when I ls -l
 alias ls="ls -Gh"
 
+# Common gitisms
+alias gits="git s" # really common typo
+alias grc="git add -u && git rebase --continue"
+
 # Thumbtack path aliases
 
 export PATH="$HOME/bin:/src/thumbtack/python/thumbtack/tools:/src/thumbtack/auto_uploader:$PATH"
