@@ -705,7 +705,7 @@ function! HandleURI()
         echo "No URI found in line."
     endif
 endfunction
-map <leader>u :call HandleURI()<CR>
+map <leader>U :call HandleURI()<CR>
 " }}}
 
 " Quickreturn
@@ -802,7 +802,7 @@ let g:microdata_attributes_complete = 0
 let g:atia_attributes_complete = 0
 
 " }}}
-" NERD Tree {{{
+" NERDTree {{{
 
 nmap <leader>T :NERDTreeToggle<CR>
 nmap <leader>p :NERDTreeFind<CR>
@@ -829,6 +829,12 @@ endfunction
 
 autocmd GUIEnter * call AutoOpenNERDTree()
 autocmd VimEnter * call AutoFocusAwayFromNERDTree()
+
+" }}}
+" NERDCommenter {{{
+
+nnoremap <leader>/ :call NERDComToggleComment()<cr>
+vnoremap <leader>/ :call NERDComToggleComment()<cr>
 
 " }}}
 " OrgMode {{{
