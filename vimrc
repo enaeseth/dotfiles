@@ -125,11 +125,15 @@ set statusline+=%m   " Modified flag.
 set statusline+=%r   " Readonly flag.
 set statusline+=%w   " Preview window flag.
 
-set statusline+=\    " Space.
-
-set statusline+=%#redbar#                " Highlight the following as a warning.
-set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
-set statusline+=%*                           " Reset highlighting.
+if exists('g:loaded_fugitive')
+    set statusline+=\ %{fugitive#statusline()}
+    set statusline+=\    " Space.
+endif
+if exists('g:loaded_syntastic_plugin')
+    set statusline+=%#redbar#                " Highlight the following as a warning.
+    set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
+    set statusline+=%*                           " Reset highlighting.
+endif
 
 set statusline+=%=   " Right align.
 
@@ -636,7 +640,7 @@ noremap ` <C-^>
 inoremap <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
 
 " Better Completion
-set completeopt=longest,menuone,preview
+set completeopt=menu
 
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null
