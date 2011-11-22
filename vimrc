@@ -269,9 +269,9 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>??<CR><c-o>
 
 set foldlevelstart=0
 
-" Space to toggle folds.
-nnoremap <Space> za
-vnoremap <Space> za
+" Return to toggle folds.
+nnoremap <CR> za
+vnoremap <CR> za
 
 " Make zO recursively open whatever top level fold we're in, no matter where the
 " cursor happens to be.
