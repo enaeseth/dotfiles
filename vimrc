@@ -468,6 +468,14 @@ augroup ft_org
 augroup END
 
 " }}}
+" PHP {{{
+augroup ft_php
+    au!
+
+    au FileType php setlocal textwidth=100
+    au FileType php setlocal foldmethod=syntax
+augroup END
+" }}}
 " Puppet {{{
 
 augroup ft_puppet
@@ -489,7 +497,7 @@ augroup ft_python
 
     au FileType python setlocal omnifunc=pythoncomplete#Complete
     au FileType python setlocal define=^\s*\\(def\\\\|class\\)
-    au FileType python compiler nose
+    au FileType python compiler nosetests
     au FileType man nnoremap <buffer> <cr> :q<cr>
 augroup END
 
@@ -535,6 +543,7 @@ augroup END
 " }}}
 
 " }}}
+"
 " Quick editing -------------------------------------------------------------------------------- {{{
 
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>
@@ -575,10 +584,10 @@ nnoremap <leader><up> <C-w>s
 nnoremap <leader><down> <C-w>s<C-w>j
 
 " Clean whitespace
-map <leader>W  :%s/\s\+$//<cr>:let @/=''<CR>
+map <leader>h  :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Dammit, Slimv
-map <leader>WW :%s/\s\+$//<cr>:let @/=''<CR>
+map <leader>hh :%s/\s\+$//<cr>:let @/=''<CR>
 
 " Change case
 nnoremap <C-u> gUiw
@@ -873,7 +882,8 @@ let g:rbpt_max = 16
 " }}}
 " Supertab {{{
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabLongestEnhanced = 1
 let g:SuperTabLongestHighlight = 1
 
 "}}}
