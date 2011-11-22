@@ -79,9 +79,6 @@
 [submodule "vim/bundle/vim-less"]
 	path = vim/bundle/vim-less
 	url = git://github.com/groenewege/vim-less.git
-[submodule "vim/bundle/minibufexpl"]
-	path = vim/bundle/minibufexpl
-	url = git://github.com/fholgado/minibufexpl.vim.git
 [submodule "vim/bundle/hammer"]
 	path = vim/bundle/hammer
 	url = git://github.com/robgleeson/hammer.vim.git
