@@ -331,7 +331,7 @@ augroup END
 augroup ft_coffee
     au!
 
-    autocmd FileType coffee shiftwidth=2 softtabstop=2
+    au FileType coffee setlocal shiftwidth=2 softtabstop=2
 augroup END
 " }}}
 " CSS and Less {{{
