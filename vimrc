@@ -780,6 +780,9 @@ map <leader>a :Ack!
 
 let g:CommandTMaxHeight = 15
 
+" Foreign visitor support
+nnoremap <D-r> :CommandT<CR>
+
 " }}}
 " Fugitive {{{
 
