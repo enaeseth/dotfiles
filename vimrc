@@ -120,32 +120,37 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " }}}
 " Status line ---------------------------------------------------------------------------------- {{{
 
-set statusline=%f    " Path.
-set statusline+=%m   " Modified flag.
+hi YellowBar term=reverse ctermfg=white ctermbg=yellow guifg=#002b36 guibg=#b58900
+hi BlueBar   term=reverse ctermfg=white ctermbg=blue guifg=#fdf6e3 guibg=#268bd2
+hi RedBar    term=reverse ctermfg=white ctermbg=red guifg=#fdf6e3 guibg=#dc322f
+
+set statusline=%f\   " Path.
+set statusline+=%#YellowBar#
+set statusline+=%{&modified?'[+]':''}   " Modified flag.
+set statusline+=%*                           " Reset highlighting.
+set statusline+=%#BlueBar#
 set statusline+=%r   " Readonly flag.
+set statusline+=%*                           " Reset highlighting.
 set statusline+=%w   " Preview window flag.
 
-if exists('g:loaded_fugitive')
-    set statusline+=\ %{fugitive#statusline()}
-    set statusline+=\    " Space.
-endif
-if exists('g:loaded_syntastic_plugin')
-    set statusline+=%#redbar#                " Highlight the following as a warning.
-    set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
-    set statusline+=%*                           " Reset highlighting.
-endif
+set statusline+=\ %{fugitive#statusline()}
+set statusline+=\    " Space.
+
+set statusline+=%#RedBar#                " Highlight the following as a warning.
+set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
+set statusline+=%*                           " Reset highlighting.
 
 set statusline+=%=   " Right align.
 
-" File format, encoding and type.  Ex: "(unix/utf-8/python)"
+" File encoding and type.  Ex: "(utf-8/python)"
 set statusline+=(
 set statusline+=%{strlen(&fenc)?&fenc:&enc}   " Encoding (utf-8).
-set statusline+=/
+set statusline+=%{strlen(&ft)?'/':''}
 set statusline+=%{&ft}                        " Type (python).
 set statusline+=)
 
-" Line and column position and counts.
-set statusline+=\ (line\ %l\/%L,\ col\ %03c)
+" Buffer number, line and column position and counts.
+set statusline+=\ (%n)\ (%l\/%L,\ %03c)
 
 " }}}
 " Abbreviations -------------------------------------------------------------------------------- {{{
