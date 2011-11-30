@@ -846,8 +846,8 @@ autocmd VimEnter * call AutoFocusAwayFromNERDTree()
 " }}}
 " NERDCommenter {{{
 
-nnoremap <leader>/ :call NERDComToggleComment()<cr>
-vnoremap <leader>/ :call NERDComToggleComment()<cr>
+nnoremap <leader>/ :call NERDComment(0, "toggle")<cr>
+vnoremap <leader>/ :call NERDComment(1, "toggle")<cr>
 
 " }}}
 " OrgMode {{{
@@ -886,7 +886,7 @@ let g:rbpt_max = 16
 " }}}
 " Supertab {{{
 
-let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabDefaultCompletionType = "<c-p>"
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabLongestHighlight = 1
 
@@ -895,8 +895,9 @@ let g:SuperTabLongestHighlight = 1
 
 let g:syntastic_enable_signs = 1
 let g:syntastic_disabled_filetypes = ['html']
-let g:syntastic_stl_format = '[%E{Error 1/%e: line %fe}%B{, }%W{Warning 1/%w: line %fw}]'
+let g:syntastic_stl_format = '[%E{Error 1/%e :%fe}%B{, }%W{Warning 1/%w :%fw}]'
 let g:syntastic_jsl_conf = '$HOME/.vim/jsl.conf'
+let g:syntastic_auto_loc_list = 1
 
 " }}}
 " Threesome {{{
