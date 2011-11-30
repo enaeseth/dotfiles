@@ -502,7 +502,6 @@ augroup ft_python
 
     au FileType python setlocal omnifunc=pythoncomplete#Complete
     au FileType python setlocal define=^\s*\\(def\\\\|class\\)
-    au FileType python compiler nosetests
     au FileType man nnoremap <buffer> <cr> :q<cr>
 augroup END
 
