@@ -13,9 +13,9 @@
 	b = branch
 	s = status
 	cb = !git branch | egrep ^\\\\* | sed -e "'s/^\\* //'"
-	lol = log --pretty=oneline
-	lm = log --pretty=oneline master..HEAD
-	ln = log --pretty=oneline next..HEAD
+	lol = log --oneline
+	lm = log --oneline master..HEAD
+	ln = log --oneline next..HEAD
 	lu = !git log --pretty=oneline origin/$(git cb)..HEAD
 	lastweek = !git shortlog --after=\"`date -j -v-1w '+%b %d %Y'`\"
 	update = !git stash && git pull --rebase && git stash pop
