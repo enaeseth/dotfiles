@@ -25,6 +25,7 @@
 	d = diff
 	di = diff --cached
 	cp = cherry-pick
+	checkpoint = !git add -A && git commit -m Checkpoint
 [github]
 	user = enaeseth
 	token = <%= prompt('GitHub API token:', `git config --global github.token`) %>
