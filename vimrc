@@ -66,6 +66,8 @@ set wildignore+=*.DS_Store                       " OSX bullshit
 set wildignore+=*.luac                           " Lua byte code
 set wildignore+=*.pyc                            " Python byte code
 
+set wildignore+=*.orig                           " Merge resolution files
+
 " }}}
 
 " Make Vim able to edit crontab files again.
@@ -165,10 +167,6 @@ set showmatch
 set hlsearch
 set gdefault
 
-nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
-
 set scrolloff=3
 set sidescroll=1
 set sidescrolloff=10
@@ -177,33 +175,13 @@ set virtualedit+=block
 
 noremap <silent> <leader><space> :noh<cr>:call clearmatches()<cr>
 
-map <tab> %
-
-" Made D behave
-nnoremap D d$
-
-" Keep search matches in the middle of the window and pulse the line when moving
-" to them.
-nnoremap n nzzzv:call PulseCursorLine()<cr>
-nnoremap N Nzzzv:call PulseCursorLine()<cr>
-
-" Don't move on *
-nnoremap * *<c-o>
-
 " Same when jumping around
 nnoremap g; g;zz
 nnoremap g, g,zz
 
-" Easier to type, and I never use the default behavior.
-noremap H ^
-noremap L g_
-
 " Heresy
 inoremap <c-a> <esc>I
 inoremap <c-e> <esc>A
-
-" Open a Quickfix window for the last search.
-nnoremap <silent> <leader>/ :execute 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 
 " Ack for the last search.
 nnoremap <silent> <leader>? :execute "Ack! '" . substitute(substitute(substitute(@/, "\\\\<", "\\\\b", ""), "\\\\>", "\\\\b", ""), "\\\\v", "", "") . "'"<CR>
@@ -380,16 +358,6 @@ augroup ft_gitcommit
 augroup END
 
 " }}}
-" Java {{{
-
-augroup ft_java
-    au!
-
-    au FileType java setlocal foldmethod=marker
-    au FileType java setlocal foldmarker={,}
-augroup END
-
-" }}}
 " Javascript {{{
 
 augroup ft_javascript
@@ -460,10 +428,6 @@ augroup END
 augroup ft_python
     au!
 
-    au Filetype python noremap  <buffer> <localleader>rr :RopeRename<CR>
-    au Filetype python vnoremap <buffer> <localleader>rm :RopeExtractMethod<CR>
-    au Filetype python noremap  <buffer> <localleader>ri :RopeOrganizeImports<CR>
-
     au FileType python setlocal omnifunc=pythoncomplete#Complete
     au FileType python setlocal define=^\s*\\(def\\\\|class\\)
     au FileType man nnoremap <buffer> <cr> :q<cr>
@@ -515,29 +479,6 @@ augroup END
 " Quick editing -------------------------------------------------------------------------------- {{{
 
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>
-nnoremap <leader>es <C-w>s<C-w>j<C-w>L:e ~/.vim/snippets/<cr>
-nnoremap <leader>eo <C-w>s<C-w>j<C-w>L:e ~/Dropbox/Org<cr>4j
-nnoremap <leader>ez <C-w>s<C-w>j<C-w>L:e ~/Projects/dotfiles/zsh<cr>4j
-
-" }}}
-" Shell ---------------------------------------------------------------------------------------- {{{
-
-function! s:ExecuteInShell(command) " {{{
-    let command = join(map(split(a:command), 'expand(v:val)'))
-    let winnr = bufwinnr('^' . command . '$')
-    silent! execute  winnr < 0 ? 'botright vnew ' . fnameescape(command) : winnr . 'wincmd w'
-    setlocal buftype=nowrite bufhidden=wipe nobuflisted noswapfile nowrap nonumber
-    echo 'Execute ' . command . '...'
-    silent! execute 'silent %!'. command
-    silent! redraw
-    silent! execute 'au BufUnload <buffer> execute bufwinnr(' . bufnr('#') . ') . ''wincmd w'''
-    silent! execute 'nnoremap <silent> <buffer> <LocalLeader>r :call <SID>ExecuteInShell(''' . command . ''')<CR>:AnsiEsc<CR>'
-    silent! execute 'nnoremap <silent> <buffer> q :q<CR>'
-    silent! execute 'AnsiEsc'
-    echo 'Shell command ' . command . ' executed.'
-endfunction " }}}
-command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
-nnoremap <leader>! :Shell 
 
 " }}}
 " Convenience mappings ------------------------------------------------------------------------- {{{
@@ -552,10 +493,11 @@ nnoremap <leader><up> <C-w>s
 nnoremap <leader><down> <C-w>s<C-w>j
 
 " Clean whitespace
-map <leader>h  :%s/\s\+$//<cr>:let @/=''<CR>
+map <leader>h :%s/\s\+$//<cr>:let @/=''<cr>
 
-" Dammit, Slimv
-map <leader>hh :%s/\s\+$//<cr>:let @/=''<CR>
+" Send visual selection to gist.github.com as a private, filetyped Gist
+" Requires the gist command line too (brew install gist)
+vnoremap <leader>G :w !gist -p -t %:e \| pbcopy<cr>
 
 " Change case
 nnoremap <C-u> gUiw
@@ -580,30 +522,8 @@ nnoremap <silent> <F6> :YRShow<cr>
 " Formatting, TextMate-style
 nnoremap Q gqip
 
-" Easier linewise reselection
-nnoremap <leader>V V`]
-
 " Preview Files
 nnoremap <leader>p :w<cr>:Hammer<cr>
-
-" HTML tag closing
-inoremap <C-_> <Space><BS><Esc>:call InsertCloseTag()<cr>a
-
-" Align text
-nnoremap <leader>Al :left<cr>
-nnoremap <leader>Ac :center<cr>
-nnoremap <leader>Ar :right<cr>
-vnoremap <leader>Al :left<cr>
-vnoremap <leader>Ac :center<cr>
-vnoremap <leader>Ar :right<cr>
-
-" Cmdheight switching
-nnoremap <leader>1 :set cmdheight=1<cr>
-nnoremap <leader>2 :set cmdheight=2<cr>
-
-" Source
-vnoremap <leader>S y:execute @@<cr>
-nnoremap <leader>S ^vg_y:execute @@<cr>
 
 " Replaste
 nnoremap <D-p> "_ddPV`]=
@@ -613,18 +533,11 @@ noremap ' `
 noremap æ '
 noremap ` <C-^>
 
-" Calculator
-inoremap <C-B> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
-
 " Better Completion
 set completeopt=menu
 
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null
-
-" I suck at typing.
-nnoremap <localleader>= ==
-vnoremap - =
 
 " Easy filetype switching {{{
 nnoremap _md :set ft=markdown<CR>
@@ -689,42 +602,6 @@ map <leader>U :call HandleURI()<CR>
 inoremap <c-cr> <esc>A<cr>
 inoremap <s-cr> <esc>A:<cr>
 
-" Indent Guides {{{
-
-let g:indentguides_state = 0
-function! IndentGuides() " {{{
-    if g:indentguides_state
-        let g:indentguides_state = 0
-        2match None
-    else
-        let g:indentguides_state = 1
-        execute '2match IndentGuides /\%(\_^\s*\)\@<=\%(\%'.(0*&sw+1).'v\|\%'.(1*&sw+1).'v\|\%'.(2*&sw+1).'v\|\%'.(3*&sw+1).'v\|\%'.(4*&sw+1).'v\|\%'.(5*&sw+1).'v\|\%'.(6*&sw+1).'v\|\%'.(7*&sw+1).'v\)\s/'
-    endif
-endfunction " }}}
-nnoremap <leader>i :call IndentGuides()<cr>
-
-" }}}
-" Block Colors {{{
-
-let g:blockcolor_state = 0
-function! BlockColor() " {{{
-    if g:blockcolor_state
-        let g:blockcolor_state = 0
-        call matchdelete(77880)
-        call matchdelete(77881)
-        call matchdelete(77882)
-        call matchdelete(77883)
-    else
-        let g:blockcolor_state = 1
-        call matchadd("BlockColor1", '^ \{4}.*', 1, 77880)
-        call matchadd("BlockColor2", '^ \{8}.*', 2, 77881)
-        call matchadd("BlockColor3", '^ \{12}.*', 3, 77882)
-        call matchadd("BlockColor4", '^ \{16}.*', 4, 77883)
-    endif
-endfunction " }}}
-nnoremap <leader>B :call BlockColor()<cr>
-
-" }}}
 " Insert Mode Completion {{{
 
 inoremap <c-l> <c-x><c-l>
@@ -977,47 +854,14 @@ function! s:AckMotion(type) abort
 endfunction
 
 " }}}
-" Error toggles ----------------------------------------------------------- {{{
-
-command! ErrorsToggle call ErrorsToggle()
-function! ErrorsToggle() " {{{
-  if exists("w:is_error_window")
-    unlet w:is_error_window
-    exec "q"
-  else
-    exec "Errors"
-    lopen
-    let w:is_error_window = 1
-  endif
-endfunction " }}}
-
-command! -bang -nargs=? QFixToggle call QFixToggle(<bang>0)
-function! QFixToggle(forced) " {{{
-  if exists("g:qfix_win") && a:forced == 0
-    cclose
-    unlet g:qfix_win
-  else
-    copen 10
-    let g:qfix_win = bufnr("$")
-  endif
-endfunction " }}}
-
-nmap <silent> <f3> :ErrorsToggle<cr>
-nmap <silent> <f4> :QFixToggle<cr>
-
-" }}}
 " Utils ------------------------------------------------------------------- {{{
-
-function! g:echodammit(msg)
-    exec 'echom "----------> ' . a:msg . '"'
-endfunction
 
 " Synstack {{{
 
 " Show the stack of syntax hilighting classes affecting whatever is under the
 " cursor.
 function! SynStack() "{{{
-  echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " > ")
+  echo join(map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")'), " ❯ ")
 endfunc "}}}
 
 nnoremap ß :call SynStack()<CR>
