@@ -34,7 +34,7 @@ set history=1000
 set undofile
 set undoreload=10000
 set list
-set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
+set listchars=tab:▸\ ,trail:·,eol:¬,extends:❯,precedes:❮
 set shell=/bin/zsh
 set lazyredraw
 set matchtime=3
@@ -56,6 +56,7 @@ set wildmenu
 set wildmode=list:longest
 
 set wildignore+=.hg,.git,.svn                    " Version control
+set wildignore+=TAGS                             " Ctags
 set wildignore+=*.aux,*.out,*.toc                " LaTeX intermediate files
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg   " binary images
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifest " compiled object files
@@ -124,6 +125,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 hi YellowBar term=reverse ctermfg=white ctermbg=yellow guifg=#002b36 guibg=#b58900
 hi BlueBar   term=reverse ctermfg=white ctermbg=blue guifg=#fdf6e3 guibg=#268bd2
 hi RedBar    term=reverse ctermfg=white ctermbg=red guifg=#fdf6e3 guibg=#dc322f
+
 
 set statusline=%f\   " Path.
 set statusline+=%#YellowBar#
@@ -622,8 +624,15 @@ map <leader>a :Ack!
 let g:CommandTMaxHeight = 15
 
 " Foreign visitor support
-nnoremap <D-r> :CommandT<CR>
+" nnoremap <D-r> :CommandT<CR>
 
+" }}}
+" Ctrl-P {{{
+let g:ctrlp_map = '<D-e>'
+nnoremap <silent> <D-r> :CtrlPMRU<CR>
+nnoremap <silent> <D-b> :CtrlPBuffer<CR>
+
+let g:ctrlp_custom_ignore = '/build/'
 " }}}
 " Fugitive {{{
 
