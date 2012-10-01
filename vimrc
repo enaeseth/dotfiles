@@ -330,6 +330,7 @@ augroup ft_html
 
     au BufNewFile,BufRead *.html setlocal filetype=htmldjango
     au FileType html,jinja,htmldjango setlocal foldmethod=manual
+    au Filetype html,jinja,htmldjango setlocal iskeyword+=-
 
     " Use <leader>f to fold the current tag.
     au FileType html,jinja,htmldjango nnoremap <buffer> <leader>f Vatzf

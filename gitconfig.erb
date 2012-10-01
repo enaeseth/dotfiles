@@ -26,6 +26,8 @@
 	di = diff --cached
 	cp = cherry-pick
 	checkpoint = !git add -A && git commit -m Checkpoint
+	ds = diff --staged
+	pr = pull --rebase
 [github]
 	user = enaeseth
 	token = <%= prompt('GitHub API token:', `git config --global github.token`) %>
@@ -45,3 +47,13 @@
 	pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
 	insteadOf = "gist:"
+[gist]
+	private = yes
+[stgit "alias"]
+	submit = /src/thumbtack/python/thumbtack/tools/rietveld/stgit_submit.py
+[stgit "submit"]
+	uploader = /Users/eric/bin/review
+[push]
+	default = upstream
+[advice]
+	statusHints = false

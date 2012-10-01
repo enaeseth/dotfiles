@@ -1,2 +1,7 @@
 --type-add=css=.less
 --type-set=puppet=.pp
+--type-set=apache=.conf
+--ignore-dir=styles/build
+--ignore-dir=scripts/build
+--ignore-dir=scripts/src/vendor
+--ignore-dir=vendor/php
