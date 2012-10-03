@@ -18,7 +18,7 @@ alias grc="git add -u && git rebase --continue"
 
 # Thumbtack path aliases
 
-export PATH="$HOME/bin:/src/thumbtack/python/thumbtack/tools:/src/thumbtack/auto_uploader:$PATH"
+export PATH="$HOME/bin:/usr/local/bin:/src/thumbtack/python/thumbtack/tools:/src/thumbtack/auto_uploader:$PATH"
 
 export TT=/src/thumbtack
 export w=/src/thumbtack/website
