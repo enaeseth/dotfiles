@@ -136,7 +136,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " Status line ----------------------------------------------------------------------------------
 
 let g:Powerline_symbols = 'fancy'
-let g:Powerline_colorscheme='skwp'
+let g:Powerline_colorscheme = 'skwp'
 
 " Use sane regexes.
 nnoremap / /\v
