@@ -1,9 +1,6 @@
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
-[submodule "vim/bundle/vim-yankring"]
-	path = vim/bundle/vim-yankring
-	url = git://github.com/chrismetcalf/vim-yankring.git
 [submodule "vim/bundle/vim-jade"]
 	path = vim/bundle/vim-jade
 	url = git://github.com/digitaltoad/vim-jade.git
@@ -76,9 +73,6 @@
 [submodule "vim/bundle/vim-less"]
 	path = vim/bundle/vim-less
 	url = git://github.com/groenewege/vim-less.git
-[submodule "vim/bundle/hammer"]
-	path = vim/bundle/hammer
-	url = git://github.com/robgleeson/hammer.vim.git
 [submodule "vim/bundle/rainbow_parentheses"]
 	path = vim/bundle/rainbow_parentheses
 	url = https://github.com/kien/rainbow_parentheses.vim
