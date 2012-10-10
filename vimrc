@@ -31,7 +31,6 @@ set undoreload=10000
 set list
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
 set shell=/bin/zsh
-set lazyredraw
 set matchtime=3
 set showbreak=↪
 set splitbelow
@@ -71,6 +70,8 @@ set wildignore+=*.pyc                            " Python byte code
 
 set wildignore+=*.orig                           " Merge resolution files
 
+set wildignore+=build
+
 " Make Vim able to edit crontab files again.
 set backupskip=/tmp/*,/private/tmp/*" 
 
@@ -80,7 +81,7 @@ au FocusLost * :silent! wall
 " Resize splits when the window is resized
 au VimResized * :wincmd =
 
-" Show trailing whitespace, but only in insert mode
+" Show trailing whitespace, but not in insert mode
 augroup trailing
     au!
     au InsertEnter * :set listchars-=trail:·
@@ -105,6 +106,17 @@ set undodir=~/.vim/tmp/undo//     " undo files
 set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
 set backup                        " enable backups
+
+" Make those folders automatically if they don't already exist.
+if !isdirectory(expand(&undodir))
+    call mkdir(expand(&undodir), "p")
+endif
+if !isdirectory(expand(&backupdir))
+    call mkdir(expand(&backupdir), "p")
+endif
+if !isdirectory(expand(&directory))
+    call mkdir(expand(&directory), "p")
+endif
 
 " Leader
 
@@ -305,8 +317,7 @@ augroup END
 augroup ft_javascript
     au!
 
-    au FileType javascript setlocal cindent
-    au FileType javascript setlocal foldmethod=syntax
+    au FileType javascript setlocal foldmethod=manual
 augroup END
 
 " Markdown
@@ -424,6 +435,11 @@ nnoremap <leader><down> <C-w>s<C-w>j
 " Clean whitespace
 map <leader>h :%s/\s\+$//<cr>:let @/=''<cr>
 
+" I constantly hit "u" in visual mode when I mean to "y". Use "gu" for those rare occasions.
+" From https://github.com/henrik/dotfiles/blob/master/vim/config/mappings.vim
+vnoremap u <nop>
+vnoremap gu u
+
 " Send visual selection to gist.github.com as a private, filetyped Gist
 " Requires the gist command line too (brew install gist)
 vnoremap <leader>G :w !gist -p -t %:e \| pbcopy<cr>
@@ -442,20 +458,11 @@ nmap <C-E> :b#<CR>
 cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 
-" Diffoff
-nnoremap <leader>D :diffoff!<cr>
-
-" Yankring
-nnoremap <silent> <F6> :YRShow<cr>
+" Insert the directory of the current buffer in command line mode
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'>
 
 " Formatting, TextMate-style
 nnoremap Q gqip
-
-" Preview Files
-nnoremap <leader>p :w<cr>:Hammer<cr>
-
-" Replaste
-nnoremap <D-p> "_ddPV`]=
 
 " Marks and Quotes
 noremap ' `
@@ -465,47 +472,8 @@ noremap ` <C-^>
 " Sudo to write
 cmap w!! w !sudo tee % >/dev/null
 
-" Easy filetype switching
-nnoremap _md :set ft=markdown<CR>
-nnoremap _hd :set ft=htmldjango<CR>
-nnoremap _jt :set ft=htmljinja<CR>
-nnoremap _d  :set ft=diff<CR>
-
-function! InsertWideFoldMarker()
-    let append = " "
-
-    for i in range(col('.'), &textwidth - 6)
-        let append .= "-"
-    endfor
-
-    let append .= " {"."{{"
-    execute "normal! a" . append
-endfunction
-nnoremap <C-_> :call InsertWideFoldMarker()<CR>
-inoremap <C-_> <ESC>:call InsertWideFoldMarker()<CR>
-
 " Toggle paste
 set pastetoggle=<F8>
-
-" Split/Join
-"
-" Basically this splits the current line into two new ones at the cursor position,
-" then joins the second one with whatever comes next.
-"
-" Example:                      Cursor Here
-"                                    |
-"                                    V
-" foo = ('hello', 'world', 'a', 'b', 'c',
-"        'd', 'e')
-"
-"            becomes
-"
-" foo = ('hello', 'world', 'a', 'b',
-"        'c', 'd', 'e')
-"
-" Especially useful for adding items in the middle of long lists/tuples in Python
-" while maintaining a sane text width.
-nnoremap K h/[^ ]<cr>"zd$jyyP^v$h"zpJk:s/\v +$//<cr>:noh<cr>j^
 
 " Handle URL
 " Stolen from https://github.com/askedrelic/homedir/blob/master/.vimrc
@@ -544,12 +512,6 @@ let g:CommandTMaxHeight = 15
 " Foreign visitor support
 " nnoremap <D-r> :CommandT<CR>
 
-" Ctrl-P
-let g:ctrlp_map = '<D-e>'
-nnoremap <silent> <D-r> :CtrlPMRU<CR>
-nnoremap <silent> <D-b> :CtrlPBuffer<CR>
-
-let g:ctrlp_custom_ignore = '/build/'
 " Fugitive
 
 nnoremap <leader>gd :Gdiff<cr>
@@ -609,43 +571,6 @@ endfunction
 autocmd GUIEnter * call AutoOpenNERDTree()
 autocmd VimEnter * call AutoFocusAwayFromNERDTree()
 
-" NERDCommenter
-
-nnoremap <leader>/ :call NERDComment(0, "toggle")<cr>
-vnoremap <leader>/ :call NERDComment(1, "toggle")<cr>
-
-" OrgMode
-
-let g:org_plugins = ['ShowHide', '|', 'Navigator', 'EditStructure', '|', 'Todo', 'Date', 'Misc']
-
-let g:org_todo_keywords = ['TODO', '|', 'DONE']
-
-let g:org_debug = 1
-
-" Rainbow Parentheses
-
-nnoremap <leader>R :RainbowParenthesesToggle<cr>
-let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
-let g:rbpt_max = 16
-
-
 " Supertab
 
 let g:SuperTabDefaultCompletionType = "<c-p>"
@@ -660,29 +585,6 @@ let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_stl_format = '[%E{Error 1/%e :%fe}%B{, }%W{Warning 1/%w :%fw}]'
 let g:syntastic_jsl_conf = '$HOME/.vim/jsl.conf'
 let g:syntastic_auto_loc_list = 1
-
-" Threesome
-
-let g:threesome_leader = "-"
-
-let g:threesome_initial_mode = "grid"
-
-let g:threesome_initial_layout_grid = 1
-let g:threesome_initial_layout_loupe = 0
-let g:threesome_initial_layout_compare = 0
-let g:threesome_initial_layout_path = 0
-
-let g:threesome_initial_diff_grid = 1
-let g:threesome_initial_diff_loupe = 0
-let g:threesome_initial_diff_compare = 0
-let g:threesome_initial_diff_path = 0
-
-let g:threesome_initial_scrollbind_grid = 0
-let g:threesome_initial_scrollbind_loupe = 0
-let g:threesome_initial_scrollbind_compare = 0
-let g:threesome_initial_scrollbind_path = 0
-
-let g:threesome_wrap = "nowrap"
 
 " YankRing
 
