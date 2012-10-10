@@ -1,5 +1,5 @@
 " .vimrc
-" Author: Eric Naesth <eric@naeseth.com>
+
 " Source: https://github.com/enaeseth/dotfiles/blob/master/vimrc
 "
 " Largely based on Steve Losh's .vimrc, from his blog post "Coming Home to Vim",
@@ -135,38 +135,8 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " Status line ----------------------------------------------------------------------------------
 
-hi YellowBar term=reverse ctermfg=white ctermbg=yellow guifg=#002b36 guibg=#b58900
-hi BlueBar   term=reverse ctermfg=white ctermbg=blue guifg=#fdf6e3 guibg=#268bd2
-hi RedBar    term=reverse ctermfg=white ctermbg=red guifg=#fdf6e3 guibg=#dc322f
-
-
-set statusline=%f\   " Path.
-set statusline+=%#YellowBar#
-set statusline+=%{&modified?'[+]':''}   " Modified flag.
-set statusline+=%*                           " Reset highlighting.
-set statusline+=%#BlueBar#
-set statusline+=%r   " Readonly flag.
-set statusline+=%*                           " Reset highlighting.
-set statusline+=%w   " Preview window flag.
-
-set statusline+=\ %{fugitive#statusline()}
-set statusline+=\    " Space.
-
-set statusline+=%#RedBar#                " Highlight the following as a warning.
-set statusline+=%{SyntasticStatuslineFlag()} " Syntastic errors.
-set statusline+=%*                           " Reset highlighting.
-
-set statusline+=%=   " Right align.
-
-" File encoding and type.  Ex: "(utf-8/python)"
-set statusline+=(
-set statusline+=%{strlen(&fenc)?&fenc:&enc}   " Encoding (utf-8).
-set statusline+=%{strlen(&ft)?'/':''}
-set statusline+=%{&ft}                        " Type (python).
-set statusline+=)
-
-" Buffer number, line and column position and counts.
-set statusline+=\ (%n)\ (%l\/%L,\ %03c)
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_colorscheme='skwp'
 
 " Use sane regexes.
 nnoremap / /\v
@@ -699,7 +669,7 @@ nnoremap <leader>dw :call ToggleDiffWhitespace()<CR>
 " Environments (GUI/Console) -------------------------------------------------------------------
 
 if has('gui_running')
-    set guifont=Menlo:h12
+    set guifont=Menlo\ for\ Powerline:h12
 
     " Remove all the UI cruft
     set go-=T
