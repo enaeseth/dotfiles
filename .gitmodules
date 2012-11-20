@@ -97,6 +97,3 @@
 [submodule "vim/bundle/vim-powerline"]
 	path = vim/bundle/vim-powerline
 	url = git@github.com:enaeseth/vim-powerline.git
-[submodule "zprezto"]
-	path = zprezto
-	url = git@github.com:enaeseth/prezto.git
