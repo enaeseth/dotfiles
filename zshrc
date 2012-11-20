@@ -3,3 +3,5 @@
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc"
 fi
+
+alias gits="git s" # really common typo

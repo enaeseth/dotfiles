@@ -3,3 +3,31 @@
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv"
 fi
+
+export EDITOR=vim
+: which mvim && export EDITOR='mvim -f'
+export VISUAL="$EDITOR"
+
+function namedir {
+    export "$1=$2"
+    hash -d "$1=$2"
+}
+
+namedir dots "$HOME/Projects/dotfiles"
+
+namedir TT /src/thumbtack
+
+namedir w "$TT/website"
+namedir pub "$w/public"
+namedir scripts "$pub/theme/scripts"
+namedir styles "$pub/theme/styles"
+namedir template "$w/template"
+
+namedir py "$TT/python"
+namedir pyt "$py/thumbtack"
+namedir flatbed "$pyt/flatbed"
+namedir prospect "$pyt/prospect"
+namedir tools "$pyt/tools"
+
+namedir puppet "$TT/puppet"
+namedir dashboards "$TT/dashboards"

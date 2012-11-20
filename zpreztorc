@@ -5,3 +5,28 @@
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zpreztorc" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zpreztorc"
 fi
+
+zstyle ':prezto:load' zmodule 'parameter'
+
+zstyle ':prezto:load' pmodule \
+  'environment' \
+  'terminal' \
+  'editor' \
+  'history' \
+  'directory' \
+  'spectrum' \
+  'utility' \
+  'completion' \
+  'git' \
+  'python' \
+  'node' \
+  'osx' \
+  'tmux' \
+  'dpkg' \
+  'yum' \
+  'history-substring-search' \
+  'prompt'
+
+zstyle ':prezto:module:git:status:ignore' submodules 'all'
+
+zstyle ':prezto:module:prompt' theme 'eric'
