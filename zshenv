@@ -13,7 +13,8 @@ function namedir {
     hash -d "$1=$2"
 }
 
-namedir dots "$HOME/Projects/dotfiles"
+[ -d "$HOME/dotfiles" ] && namedir dots "$HOME/dotfiles"
+[ -d "$HOME/Projects/dotfiles" ] && namedir dots "$HOME/Projects/dotfiles"
 
 namedir TT /src/thumbtack
 
@@ -31,3 +32,5 @@ namedir tools "$pyt/tools"
 
 namedir puppet "$TT/puppet"
 namedir dashboards "$TT/dashboards"
+
+[ -d "$HOME/bubble/bin" ] && export PATH="$HOME/bubble/bin:$PATH"
