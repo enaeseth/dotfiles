@@ -475,9 +475,10 @@ inoremap <c-f> <c-x><c-f>
 
 map <leader>a :Ack! 
 
-" Command-T
-
-let g:CommandTMaxHeight = 15
+" Ctrl-P
+let g:ctrlp_map = '<leader>t'
+map <leader>r :CtrlPBuffer<cr>
+map <leader>f :CtrlPMixed<cr>
 
 " Foreign visitor support
 " nnoremap <D-r> :CommandT<CR>
