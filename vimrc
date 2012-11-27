@@ -13,7 +13,7 @@ set nocompatible
 " Basic options
 
 set encoding=utf-8
-set modelines=0
+set modelines=2
 set autoindent
 set showmode
 set showcmd
