@@ -385,6 +385,12 @@ augroup ft_vim
     au BufWinEnter *.txt if &ft == 'help' | wincmd L | endif
 augroup END
 
+" YAML
+
+augroup ft_yaml
+    au!
+    au FileType yaml setlocal shiftwidth=2 softtabstop=2
+augroup END
 
 "
 " Quick editing --------------------------------------------------------------------------------
