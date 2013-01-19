@@ -30,6 +30,7 @@ namedir flatbed "$pyt/flatbed"
 namedir prospect "$pyt/prospect"
 namedir tools "$pyt/tools"
 
+namedir reports "$TT/reports"
 namedir puppet "$TT/puppet"
 namedir dashboards "$TT/dashboards"
 
