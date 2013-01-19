@@ -70,9 +70,6 @@
 [submodule "vim/bundle/vim-less"]
 	path = vim/bundle/vim-less
 	url = git://github.com/groenewege/vim-less.git
-[submodule "vim/bundle/rainbow_parentheses"]
-	path = vim/bundle/rainbow_parentheses
-	url = https://github.com/kien/rainbow_parentheses.vim
 [submodule "vim/bundle/jinja"]
 	path = vim/bundle/jinja
 	url = git://github.com/vim-scripts/Jinja.git
