@@ -14,6 +14,10 @@
 	s = status
 	cb = !git branch | egrep ^\\\\* | sed -e "'s/^\\* //'"
 	lol = log --oneline
+	ls = log --pretty=format:"%C(yellow)%h\\ %Creset%s%Cblue\\ [%cn]" --decorate
+	ll = log --pretty=format:"%C(yellow)%h\\ %Creset%s%Cblue\\ [%cn]" --decorate --stat
+	ld = log --pretty=format:"%C(yellow)%h\\ %ad\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+	lf = log -u
 	lm = log --oneline master..HEAD
 	ln = log --oneline next..HEAD
 	lu = !git log --pretty=oneline origin/$(git cb)..HEAD
@@ -28,9 +32,9 @@
 	checkpoint = !git add -A && git commit -m Checkpoint
 	ds = diff --staged
 	pr = pull --rebase
+	aliases = "!git config -l | grep alias | cut -c 7-"
 [github]
 	user = enaeseth
-	token = <%= prompt('GitHub API token:', `git config --global github.token`) %>
 [merge]
 	tool = opendiff
 [core]
