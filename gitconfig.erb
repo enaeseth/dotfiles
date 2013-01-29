@@ -12,15 +12,15 @@
 	branches = branch
 	b = branch
 	s = status
-	cb = !git branch | egrep ^\\\\* | sed -e "'s/^\\* //'"
+	cb = rev-parse --abbrev-ref HEAD
 	lol = log --oneline
 	ls = log --pretty=format:"%C(yellow)%h\\ %Creset%s%Cblue\\ [%cn]" --decorate
 	ll = log --pretty=format:"%C(yellow)%h\\ %Creset%s%Cblue\\ [%cn]" --decorate --stat
 	ld = log --pretty=format:"%C(yellow)%h\\ %ad\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
 	lf = log -u
-	lm = log --oneline master..HEAD
-	ln = log --oneline next..HEAD
-	lu = !git log --pretty=oneline origin/$(git cb)..HEAD
+	lm = log --pretty=format:"%C(yellow)%h\\ %Creset%s%Cblue\\ [%cn]" --decorate master..HEAD
+	ln = log --pretty=format:"%C(yellow)%h\\ %Creset%s%Cblue\\ [%cn]" --decorate next..HEAD
+	lu = !git log --pretty=format:'%C(yellow)%h %Creset%s%Cblue [%cn]' --decorate origin/$(git cb)..HEAD
 	lastweek = !git shortlog --after=\"`date -j -v-1w '+%b %d %Y'`\"
 	update = !git stash && git pull --rebase && git stash pop
 	crush = rebase -i --autosquash
