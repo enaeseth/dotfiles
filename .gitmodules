@@ -94,3 +94,6 @@
 [submodule "zprezto"]
 	path = zprezto
 	url = git@github.com:enaeseth/prezto.git
+[submodule "vim/bundle/php-5.4"]
+	path = vim/bundle/php-5.4
+	url = git://github.com/donnut/vim-php54-syntax.git
