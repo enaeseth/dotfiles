@@ -9,6 +9,50 @@ filetype off
 filetype plugin indent on
 set nocompatible
 
+" Vundle internals
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+
+" Color schemes
+
+Bundle 'altercation/vim-colors-solarized'
+
+" Language support
+
+Bundle 'Jinja'
+Bundle 'StanAngeloff/php.vim'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'groenewege/vim-less'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'othree/html5.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'timcharper/textile.vim'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-markdown'
+Bundle 'vim-ruby/vim-ruby'
+
+" Life improvement
+
+Bundle 'Raimondi/delimitMate'
+Bundle 'git://git.wincent.com/command-t'
+Bundle 'git@github.com:enaeseth/vim-powerline.git'
+Bundle 'groenewege/vim-less'
+Bundle 'henrik/vim-indexed-search'
+Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'mileszs/ack.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'sjl/gundo.vim'
+Bundle 'spiiph/vim-space'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'vim-scripts/YankRing.vim'
+
 " Basic options
 
 set encoding=utf-8
@@ -479,14 +523,6 @@ inoremap <c-f> <c-x><c-f>
 " Ack
 
 map <leader>a :Ack! 
-
-" Ctrl-P
-let g:ctrlp_map = '<leader>t'
-map <leader>r :CtrlPBuffer<cr>
-map <leader>f :CtrlPMixed<cr>
-
-" Foreign visitor support
-" nnoremap <D-r> :CommandT<CR>
 
 " Fugitive
 
