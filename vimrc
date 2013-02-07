@@ -6,7 +6,6 @@
 " and the dotfile at https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
 
 filetype off
-call pathogen#infect()
 filetype plugin indent on
 set nocompatible
 
