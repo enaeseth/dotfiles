@@ -524,6 +524,12 @@ inoremap <c-f> <c-x><c-f>
 
 map <leader>a :Ack! 
 
+" Command-T
+let g:CommandTMaxHeight = 5
+let g:CommandTMatchWindowReverse = 1
+
+nnoremap <leader>c :CommandTFlush<cr>
+
 " Fugitive
 
 nnoremap <leader>gd :Gdiff<cr>
