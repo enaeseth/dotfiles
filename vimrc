@@ -35,6 +35,7 @@ Bundle 'vim-ruby/vim-ruby'
 
 " Life improvement
 
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'Raimondi/delimitMate'
 Bundle 'git://git.wincent.com/command-t'
 Bundle 'git@github.com:enaeseth/vim-powerline.git'
