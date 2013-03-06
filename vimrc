@@ -23,6 +23,7 @@ Bundle 'altercation/vim-colors-solarized'
 
 Bundle 'Jinja'
 Bundle 'StanAngeloff/php.vim'
+Bundle 'alunny/pegjs-vim'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'groenewege/vim-less'
 Bundle 'kchmck/vim-coffee-script'
@@ -35,8 +36,8 @@ Bundle 'vim-ruby/vim-ruby'
 
 " Life improvement
 
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'Raimondi/delimitMate'
+Bundle 'ervandew/supertab'
 Bundle 'git://git.wincent.com/command-t'
 Bundle 'git@github.com:enaeseth/vim-powerline.git'
 Bundle 'groenewege/vim-less'
@@ -52,38 +53,38 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
-Bundle 'vim-scripts/YankRing.vim'
+Bundle 'YankRing.vim'
 
 " Basic options
 
-set encoding=utf-8
-set modelines=2
-set autoindent
-set showmode
-set showcmd
-set hidden
-set visualbell
-set cursorline
-set ttyfast
-set ruler
-set backspace=indent,eol,start
-set relativenumber
-set laststatus=2
-set history=1000
-set undofile
-set undoreload=10000
-set list
+set encoding=utf-8                  " Use the only sane encoding choice
+set modelines=2                     " Check 2 lines of files for commands
+set autoindent                      " Continue previous line's indent by default
+set showmode                        " Show mode in last line
+set showcmd                         " Show visual selection size in last line
+set hidden                          " Don't unload abandoned buffers
+set visualbell                      " Use the visual bell instead of beeping
+set cursorline                      " Highlight the entire line the cursor is on
+set ttyfast                         " Assume a fast terminal connection
+set ruler                           " Show cursor position
+set backspace=indent,eol,start      " Sane edge case behavior for Backspace key
+set relativenumber                  " Use relative line numbering
+set laststatus=2                    " Show a status line for all windows always
+set history=1000                    " Size of command and search pattern history
+set undofile                        " Store undo history persistently on disk
+set undoreload=10000                " Save the whole buffer for undo
+set list                            " Show invisible characters
 set listchars=tab:▸\ ,eol:¬,extends:❯,precedes:❮
-set shell=/bin/zsh
-set matchtime=3
-set showbreak=↪
-set splitbelow
-set splitright
-set fillchars=diff:⣿
-set autowrite
-set shiftround
-set title
-set linebreak
+set shell=/bin/zsh                  " Override default shell
+set matchtime=3                     " Auto-highlight '%' match for 0.3s
+set showbreak=↪                     " Use this character to indicate wrapping
+set splitbelow                      " Default horizontal splits to appear below
+set splitright                      " Default vertical splits to appear at right
+set fillchars=diff:⣿                " Fill deleted diff lines in clearly
+set autowrite                       " Write modified files on certain commands
+set shiftround                      " Round indents to multiple of shiftwidth
+set title                           " Update the (terminal) window title
+set linebreak                       " Break lines at opportune characters
 set dictionary=/usr/share/dict/words
 
 " Time out on key codes but not mappings.
@@ -117,13 +118,17 @@ set wildignore+=*.orig                           " Merge resolution files
 set wildignore+=build
 
 " Make Vim able to edit crontab files again.
-set backupskip=/tmp/*,/private/tmp/*" 
+set backupskip=/tmp/*,/private/tmp/*"
 
-" Save when losing focus
-au FocusLost * :silent! wall
+augroup basic
+    au!
 
-" Resize splits when the window is resized
-au VimResized * :wincmd =
+    " Save when losing focus
+    au FocusLost * :silent! wall
+
+    " Resize splits when the window is resized
+    au VimResized * :wincmd =
+augroup END
 
 " Show trailing whitespace, but not in insert mode
 augroup trailing
@@ -180,7 +185,7 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 " Status line ----------------------------------------------------------------------------------
 
 let g:Powerline_symbols = 'fancy'
-let g:Powerline_colorscheme = 'skwp'
+let g:Powerline_colorscheme = 'solarized256'
 
 " Use sane regexes.
 nnoremap / /\v
