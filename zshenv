@@ -17,6 +17,7 @@ function namedir {
 [ -d "$HOME/Projects/dotfiles" ] && namedir dots "$HOME/Projects/dotfiles"
 
 namedir TT /src/thumbtack
+namedir dev /srv/thumbtack/developers/eric
 
 namedir w "$TT/website"
 namedir pub "$w/public"
