@@ -10,7 +10,7 @@ task :install do
   Dir['*'].each do |filename|
     next if IGNORED_FILES.include? filename
 
-    clean_filename = filename.sub('.erb', '')
+    clean_filename = filename.sub('.erb', '').sub(/^(ssh)_/, '\1/')
     dest_filename = ".#{clean_filename}"
     dest_path = File.join(ENV['HOME'], dest_filename)
 

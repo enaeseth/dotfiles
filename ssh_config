@@ -1,0 +1,36 @@
+ControlMaster auto
+ControlPath /tmp/ssh_mux_%h_%p_%r
+ControlPersist 4h
+ServerAliveInterval 60
+
+Host *.thumbtack.com
+	IdentityFile ~/.ssh/id_rsa_thumbtack
+	PasswordAuthentication no
+Host root.*.internal
+	User power_eric
+	IdentityFile ~/.ssh/id_rsa_thumbtack_superuser
+Host *.internal
+	User eric
+	IdentityFile ~/.ssh/id_rsa_thumbtack
+	PasswordAuthentication no
+	ProxyCommand ssh boxy.thumbtack.com -W %h:%p
+Host root.boxy.internal
+	User eric
+	IdentityFile ~/.ssh/id_rsa_thumbtack
+	HostName boxy.internal
+	PasswordAuthentication no
+Host root.destructor.internal
+	HostName destructor.internal
+Host root.gearshift.internal
+	HostName gearshift.internal
+Host root.fatbot.internal
+	HostName fatbot.internal
+Host root.femputer.internal
+	HostName femputer.internal
+Host root.fender.internal
+	HostName fender.internal
+Host amigos.lan
+	User root
+Host balancer
+    HostName 10.40.208.146
+    ControlPath none
