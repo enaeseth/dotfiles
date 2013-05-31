@@ -29,6 +29,8 @@ Host root.femputer.internal
 	HostName femputer.internal
 Host root.fender.internal
 	HostName fender.internal
+Host root.cartridgeunit.internal
+	HostName cartridgeunit.internal
 Host amigos.lan
 	User root
 Host balancer
