@@ -31,6 +31,10 @@ Host root.fender.internal
 	HostName fender.internal
 Host root.cartridgeunit.internal
 	HostName cartridgeunit.internal
+Host root.monique.internal
+	HostName monique.internal
+Host root.fanny.internal
+	HostName fanny.internal
 Host amigos.lan
 	User root
 Host balancer
