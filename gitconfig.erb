@@ -20,7 +20,7 @@
 	lf = log -u
 	lm = log --pretty=format:"%C(yellow)%h\\ %Creset%s%Cblue\\ [%cn]" --decorate master..HEAD
 	ln = log --pretty=format:"%C(yellow)%h\\ %Creset%s%Cblue\\ [%cn]" --decorate next..HEAD
-	lu = !git log --pretty=format:'%C(yellow)%h %Creset%s%Cblue [%cn]' --decorate origin/$(git cb)..HEAD
+	lu = !git log --pretty=format:'%C(yellow)%h %C(green)%ad %Creset%s%Cblue' --decorate --date=relative origin/$(git cb)..HEAD
 	lastweek = !git shortlog --after=\"`date -j -v-1w '+%b %d %Y'`\"
 	update = !git stash && git pull --rebase && git stash pop
 	crush = rebase -i --autosquash
