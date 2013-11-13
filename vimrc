@@ -5,9 +5,8 @@
 " Largely based on Steve Losh's .vimrc, from his blog post "Coming Home to Vim",
 " and the dotfile at https://bitbucket.org/sjl/dotfiles/src/tip/vim/.vimrc
 
-filetype off
-filetype plugin indent on
 set nocompatible
+filetype off
 
 " Vundle internals
 
@@ -56,6 +55,8 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'troydm/shellasync.vim'
 Bundle 'YankRing.vim'
+
+filetype plugin indent on
 
 " Basic options
 
