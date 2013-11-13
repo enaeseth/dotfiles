@@ -25,6 +25,10 @@ Host root.gearshift.internal
 	HostName gearshift.internal
 Host root.fatbot.internal
 	HostName fatbot.internal
+Host root.fry.internal
+	HostName fry.internal
+Host root.lars.internal
+	HostName lars.internal
 Host root.femputer.internal
 	HostName femputer.internal
 Host root.fender.internal
@@ -35,6 +39,10 @@ Host root.monique.internal
 	HostName monique.internal
 Host root.fanny.internal
 	HostName fanny.internal
+Host root.clamps.internal
+	HostName clamps.internal
+Host root.cylon.internal
+	HostName cylon.internal
 Host amigos.lan
 	User root
 Host balancer
