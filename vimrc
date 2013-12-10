@@ -276,7 +276,7 @@ inoremap # X<BS>#
 
 augroup ft_c
     au!
-    au FileType c setlocal foldmethod=syntax
+    au FileType c setlocal foldmethod=manual
 augroup END
 
 " CoffeeScript
@@ -382,7 +382,6 @@ augroup ft_php
     au!
 
     au FileType php setlocal textwidth=100
-    au FileType php setlocal foldmethod=syntax
 augroup END
 " Puppet
 
@@ -425,7 +424,7 @@ augroup END
 
 augroup ft_ruby
     au!
-    au Filetype ruby setlocal foldmethod=syntax shiftwidth=2 softtabstop=2
+    au Filetype ruby setlocal foldmethod=manual shiftwidth=2 softtabstop=2
 augroup END
 
 " Vim
