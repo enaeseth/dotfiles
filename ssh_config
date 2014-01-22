@@ -41,6 +41,10 @@ Host root.clamps.internal
 	HostName clamps.internal
 Host root.cylon.internal
 	HostName cylon.internal
+Host root.edna.internal
+	HostName edna.internal
+Host root.mom.internal
+	HostName mom.internal
 Host amigos.lan
 	User root
 Host balancer
