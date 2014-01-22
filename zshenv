@@ -14,6 +14,7 @@ function namedir {
 }
 
 [ -d "$HOME/dotfiles" ] && namedir dots "$HOME/dotfiles"
+[ -d "$HOME/.dots" ] && namedir dots "$HOME/.dots"
 [ -d "$HOME/Projects/dotfiles" ] && namedir dots "$HOME/Projects/dotfiles"
 
 namedir TT /src/thumbtack
