@@ -5,14 +5,12 @@ ServerAliveInterval 60
 
 Host *.thumbtack.com
 	IdentityFile ~/.ssh/id_rsa_thumbtack
-	PasswordAuthentication no
 Host root.*.internal
 	User power_eric
 	IdentityFile ~/.ssh/id_rsa_thumbtack_superuser
 Host *.internal
 	User eric
 	IdentityFile ~/.ssh/id_rsa_thumbtack
-	PasswordAuthentication no
 	ProxyCommand ssh boxy.thumbtack.com -W %h:%p
 Host root.boxy.internal
 	User eric
