@@ -385,13 +385,14 @@ augroup ft_php
 
     au FileType php setlocal textwidth=100
 augroup END
+
 " Puppet
 
 augroup ft_puppet
     au!
 
-    au Filetype puppet setlocal foldmethod=marker
-    au Filetype puppet setlocal foldmarker={,}
+    au Filetype puppet setlocal foldmethod=manual
+    au FileType puppet setlocal shiftwidth=4 softtabstop=4
 augroup END
 
 " Python
