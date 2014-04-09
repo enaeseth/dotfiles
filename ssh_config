@@ -4,47 +4,13 @@ ControlPersist 4h
 ServerAliveInterval 60
 
 Host *.thumbtack.com
-	IdentityFile ~/.ssh/id_rsa_thumbtack
-Host root.*.internal
-	User power_eric
-	IdentityFile ~/.ssh/id_rsa_thumbtack_superuser
+	IdentityFile ~/.ssh/id_rsa_thumbtack_debian
+	IdentityFile ~/.ssh/id_rsa_thumbtack_redhat
 Host *.internal
 	User eric
-	IdentityFile ~/.ssh/id_rsa_thumbtack
+	IdentityFile ~/.ssh/id_rsa_thumbtack_debian
+	IdentityFile ~/.ssh/id_rsa_thumbtack_redhat
 	ProxyCommand ssh boxy.thumbtack.com -W %h:%p
-Host root.boxy.internal
-	User eric
-	IdentityFile ~/.ssh/id_rsa_thumbtack
-	HostName boxy.internal
-	PasswordAuthentication no
-Host root.destructor.internal
-	HostName destructor.internal
-Host root.gearshift.internal
-	HostName gearshift.internal
-Host root.fatbot.internal
-	HostName fatbot.internal
-Host root.fry.internal
-	HostName fry.internal
-Host root.lars.internal
-	HostName lars.internal
-Host root.femputer.internal
-	HostName femputer.internal
-Host root.fender.internal
-	HostName fender.internal
-Host root.cartridgeunit.internal
-	HostName cartridgeunit.internal
-Host root.monique.internal
-	HostName monique.internal
-Host root.fanny.internal
-	HostName fanny.internal
-Host root.clamps.internal
-	HostName clamps.internal
-Host root.cylon.internal
-	HostName cylon.internal
-Host root.edna.internal
-	HostName edna.internal
-Host root.mom.internal
-	HostName mom.internal
 Host amigos.lan
 	User root
 Host balancer
