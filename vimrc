@@ -454,9 +454,8 @@ nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>
 
 " Convenience mappings -------------------------------------------------------------------------
 
-" Opening splits
-nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <leader>W <C-w>s<C-w>j
+" Delete but don't yank
+noremap D "_d
 
 nnoremap <leader><left> <C-w>v
 nnoremap <leader><right> <C-w>v<C-w>l
