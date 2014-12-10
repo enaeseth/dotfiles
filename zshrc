@@ -38,13 +38,17 @@ venv() {
 check_venv() {
     local current="$(pwd)"
     local project
+    local project_path
     local expected_env
 
     [[ "$current" =~ ^/src/ ]] && {
         project=$(project_name "$current")
+        project_path="/src/${project}"
         expected_env="${VIRTUALENV_STORAGE}/${project}"
 
-        [[ -d "$expected_env" ]] && venv $project
+        [[ -d "$expected_env" ||
+           -e "${project_path}/setup.py" ||
+           -e "${project_path}/requirements.txt" ]] && venv $project
     }
 }
 
