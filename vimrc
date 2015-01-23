@@ -580,7 +580,21 @@ nmap <leader>p :NERDTreeFind<CR>
 au Filetype nerdtree setlocal nolist
 
 let NERDTreeHighlightCursorline=1
-let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index', 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json', '.*\.o$', 'db.db']
+let NERDTreeIgnore=[
+    \'.vim$',
+    \'\~$',
+    \'.*\.pyc$',
+    \'pip-log\.txt$',
+    \'whoosh_index',
+    \'xapian_index',
+    \'.*.pid',
+    \'monitor.py',
+    \'.*-fixtures-.*.json',
+    \'.*\.o$',
+    \'db.db',
+    \'\.sqlite3$',
+    \'\.egg-info$',
+    \]
 
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
