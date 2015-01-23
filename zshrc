@@ -10,10 +10,24 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Virtualenv support
 
-VIRTUALENV_STORAGE="$HOME/Library/Application Support/Python/Environments"
+VIRTUALENV_STORAGE="$HOME/Library/User/Python/Environments"
+
+project_root() {
+    if [[ "$1" =~ ^/src/external/([^/]+) ]]; then
+        echo $MATCH
+    elif [[ "$1" =~ ^/src/([^/]+) ]]; then
+        echo $MATCH
+    fi
+}
 
 project_name() {
-    [[ "$1" =~ ^/src/([^/]+) ]] && echo ${MATCH[$(($MBEGIN + 5)),$MEND]}
+    local root=$(project_root "$1")
+
+    if [[ "$root" =~ ^/src/external/([^/]+) ]]; then
+        echo ${MATCH[$(($MBEGIN + 14)),$MEND]}
+    elif [[ "$root" =~ ^/src/([^/]+) ]]; then
+        echo ${MATCH[$(($MBEGIN + 5)),$MEND]}
+    fi
 }
 
 venv() {
@@ -35,6 +49,16 @@ venv() {
     source "${dest}/bin/activate"
 }
 
+reset-venv() {
+    local venv_path="$VIRTUAL_ENV"
+
+    [[ -n "$venv_path" ]] && {
+        deactivate
+        rm -fr "$venv_path"
+        venv
+    }
+}
+
 check_venv() {
     local current="$(pwd)"
     local project
@@ -43,7 +67,7 @@ check_venv() {
 
     [[ "$current" =~ ^/src/ ]] && {
         project=$(project_name "$current")
-        project_path="/src/${project}"
+        project_path=$(project_root "$current")
         expected_env="${VIRTUALENV_STORAGE}/${project}"
 
         [[ -d "$expected_env" ||
@@ -56,4 +80,6 @@ check_venv() {
     [[ -d "$VIRTUALENV_STORAGE" ]] || mkdir -p "$VIRTUALENV_STORAGE"
 
     chpwd_functions=(${chpwd_functions[@]} "check_venv")
+
+    check_venv # shells don't always start in $HOME
 }
