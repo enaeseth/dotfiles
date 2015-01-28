@@ -628,6 +628,7 @@ let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_stl_format = '[%E{Error 1/%e :%fe}%B{, }%W{Warning 1/%w :%fw}]'
 let g:syntastic_jsl_conf = '$HOME/.vim/jsl.conf'
 let g:syntastic_auto_loc_list = 1
+let g:syntastic_rst_checkers = ['rstcheck']
 
 " YankRing
 
