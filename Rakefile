@@ -35,6 +35,21 @@ task :install do
       install_file filename, dest_filename, dest_path
     end
   end
+
+  unless File.exists?(File.expand_path('~/.vim/bundle'))
+    Dir.mkdir File.expand_path('~/.vim/bundle')
+  end
+
+  unless File.exists?(File.expand_path('~/.vim/bundle/Vundle.vim'))
+    puts 'installing Vundle'
+    system %Q{git clone git://github.com/gmarik/Vundle.vim.git},
+      chdir: File.expand_path('~/.vim/bundle')
+
+    if File.exists?('/Applications/MacVim.app')
+      puts 'installing plugins via Vundle'
+      system %Q{/Applications/MacVim.app/Contents/MacOS/Vim +PluginInstall +qall}
+    end
+  end
 end
 
 def prompt(question, current_value=nil)

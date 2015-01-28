@@ -10,54 +10,53 @@ filetype off
 
 " Vundle internals
 
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Color schemes
 
-Bundle 'altercation/vim-colors-solarized'
+Plugin 'altercation/vim-colors-solarized'
 
 " Language support
 
-Bundle 'Jinja'
-Bundle 'StanAngeloff/php.vim'
-Bundle 'alunny/pegjs-vim'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'groenewege/vim-less'
-Bundle 'guns/vim-clojure-static'
-Bundle 'jnwhiteh/vim-golang'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'othree/html5.vim'
-Bundle 'pangloss/vim-javascript'
-Bundle 'rodjek/vim-puppet'
-Bundle 'timcharper/textile.vim'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-markdown'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'hynek/vim-python-pep8-indent'
+Plugin 'Jinja'
+Plugin 'StanAngeloff/php.vim'
+Plugin 'alunny/pegjs-vim'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'guns/vim-clojure-static'
+Plugin 'jnwhiteh/vim-golang'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'rodjek/vim-puppet'
+Plugin 'timcharper/textile.vim'
+Plugin 'tpope/vim-haml'
+Plugin 'tpope/vim-markdown'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'hynek/vim-python-pep8-indent'
 
 " Life improvement
 
-Bundle 'Raimondi/delimitMate'
-Bundle 'ervandew/supertab'
-Bundle 'git://git.wincent.com/command-t'
-Bundle 'git@github.com:enaeseth/vim-powerline.git'
-Bundle 'groenewege/vim-less'
-Bundle 'henrik/vim-indexed-search'
-Bundle 'michaeljsmith/vim-indent-object'
-Bundle 'mileszs/ack.vim'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'sjl/gundo.vim'
-Bundle 'spiiph/vim-space'
-Bundle 'tpope/vim-commentary'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'troydm/shellasync.vim'
-Bundle 'YankRing.vim'
+Plugin 'Raimondi/delimitMate'
+Plugin 'ervandew/supertab'
+Plugin 'git://git.wincent.com/command-t'
+Plugin 'git@github.com:enaeseth/vim-powerline.git'
+Plugin 'groenewege/vim-less'
+Plugin 'henrik/vim-indexed-search'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'mileszs/ack.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'sjl/gundo.vim'
+Plugin 'spiiph/vim-space'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'troydm/shellasync.vim'
+Plugin 'YankRing.vim'
 
 filetype plugin indent on
 
