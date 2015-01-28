@@ -25,7 +25,9 @@ TARGETS := $(INSTALLED) \
 	vim/tmp/backup \
 	vim/tmp/swap \
 	vim/tmp/undo \
-	vundle
+	vundle \
+	zprezto \
+	zprezto/modules/prompt/functions/prompt_eric_setup
 
 all: $(TARGETS)
 
@@ -56,6 +58,7 @@ $(HOME)/.gitconfig: gitconfig local/email
 
 update:
 	$(VIM) '+PluginInstall!' '+qall'
+	(cd zprezto; git pull --rebase)
 
 vundle: vim/bundle/.ready
 
@@ -65,6 +68,12 @@ vim/bundle/.ready: vim/bundle/Vundle.vim
 
 vim/bundle/Vundle.vim: vim/bundle
 	[ -d $@ ] || git clone git://github.com/gmarik/Vundle.vim.git $@
+
+zprezto:
+	[ -d $@ ] || git clone --recursive git://github.com/sorin-ionescu/prezto $@
+
+zprezto/modules/prompt/functions/prompt_eric_setup: prompt.zsh
+	ln -fns $(realpath $<) $@
 
 uninstall:
 	rm $(INSTALLED)
