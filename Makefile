@@ -41,7 +41,7 @@ local:
 
 $(HOME)/.%: %
 	@! [ -e $@ ] || [ -h $@ ] || ( echo >&2 '$@ exists'; exit 1 )
-	ln -s $(realpath $<) $@
+	ln -fns $(realpath $<) $@
 
 local/email: local
 	@read -p 'What is your email address? ' email; echo "$$email" > $@
