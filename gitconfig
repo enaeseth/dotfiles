@@ -1,6 +1,6 @@
 [user]
 	name = Eric Naeseth
-	email = <%= prompt('Git committer email:', `git config --global user.email`) %>
+	email = {email}
 [color]
 	diff = auto
 	status = auto
