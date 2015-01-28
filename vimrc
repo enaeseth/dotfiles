@@ -35,6 +35,7 @@ Bundle 'timcharper/textile.vim'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-markdown'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'hynek/vim-python-pep8-indent'
 
 " Life improvement
 
