@@ -46,7 +46,10 @@ $(HOME)/.%: %
 local/email: local
 	@read -p 'What is your email address? ' email; echo "$$email" > $@
 
-$(HOME)/.ssh/config: $(HOME)/.ssh/
+$(HOME)/.ssh/config: ssh_config
+	[ -d $(HOME)/.ssh ] || mkdir $(HOME)/.ssh
+	@! [ -e $@ ] || [ -h $@ ] || ( echo >&2 '$@ exists'; exit 1 )
+	ln -fns $(realpath $<) $@
 
 $(HOME)/.gitconfig: gitconfig local/email
 	sed "s/{email}/$$(cat local/email)/" $< > $@
