@@ -583,7 +583,9 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[
     \'.vim$',
     \'\~$',
-    \'.*\.pyc$',
+    \'.*\.py[co]$',
+    \'__pycache__$',
+    \'^_build$',
     \'pip-log\.txt$',
     \'whoosh_index',
     \'xapian_index',
