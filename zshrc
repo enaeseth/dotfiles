@@ -39,6 +39,7 @@ project_name() {
 
 venv() {
     local name="$1"
+    local python="${PYTHON:-python}"
     local dest
 
     [[ -n "$name" ]] || name=$(project_name "$(pwd)")
@@ -47,8 +48,11 @@ venv() {
     dest="${VIRTUALENV_STORAGE}/${name}"
 
     [[ -d "$dest" ]] || {
-        echo "creating virtualenv at ${dest}" >&2
-        virtualenv --prompt="[$name] " "$dest"
+        echo "creating ${python} virtualenv at ${dest}" >&2
+        virtualenv \
+            --python="$python" \
+            --prompt="[$name] " \
+            "$dest"
     }
 
     type deactivate >/dev/null && deactivate
