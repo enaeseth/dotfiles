@@ -21,6 +21,7 @@ Plugin 'altercation/vim-colors-solarized'
 " Language support
 
 Plugin 'Jinja'
+Plugin 'Keithbsmiley/swift.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'alunny/pegjs-vim'
 Plugin 'digitaltoad/vim-jade'
