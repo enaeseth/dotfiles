@@ -25,8 +25,10 @@ Plugin 'StanAngeloff/php.vim'
 Plugin 'alunny/pegjs-vim'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'guns/vim-clojure-static'
+Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'jnwhiteh/vim-golang'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'mxw/vim-jsx'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'rodjek/vim-puppet'
@@ -34,11 +36,11 @@ Plugin 'timcharper/textile.vim'
 Plugin 'tpope/vim-haml'
 Plugin 'tpope/vim-markdown'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'hynek/vim-python-pep8-indent'
 
 " Life improvement
 
 Plugin 'Raimondi/delimitMate'
+Plugin 'YankRing.vim'
 Plugin 'ervandew/supertab'
 Plugin 'git://git.wincent.com/command-t'
 Plugin 'git@github.com:enaeseth/vim-powerline.git'
@@ -56,7 +58,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'troydm/shellasync.vim'
-Plugin 'YankRing.vim'
 
 filetype plugin indent on
 
