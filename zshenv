@@ -13,6 +13,11 @@ function namedir {
     hash -d "$1=$2"
 }
 
+[[ -d "$HOME/Code" ]] && {
+    export GOPATH="$HOME/Code"
+    export PATH="${GOBIN:-${GOPATH}/bin}:$PATH"
+}
+
 [ -d "$HOME/dotfiles" ] && namedir dots "$HOME/dotfiles"
 [ -d "$HOME/.dots" ] && namedir dots "$HOME/.dots"
 [ -d "$HOME/Projects/dotfiles" ] && namedir dots "$HOME/Projects/dotfiles"
