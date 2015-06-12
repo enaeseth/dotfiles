@@ -43,14 +43,12 @@ Plugin 'vim-ruby/vim-ruby'
 " Life improvement
 
 Plugin 'Raimondi/delimitMate'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'YankRing.vim'
-Plugin 'bling/vim-airline'
 Plugin 'ervandew/supertab'
 Plugin 'git://git.wincent.com/command-t'
+Plugin 'git@github.com:enaeseth/vim-powerline.git'
 Plugin 'groenewege/vim-less'
 Plugin 'henrik/vim-indexed-search'
-Plugin 'henrik/vim-qargs'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
@@ -125,9 +123,6 @@ set wildignore+=*.DS_Store                       " OSX bullshit
 set wildignore+=*.luac                           " Lua byte code
 set wildignore+=*.pyc                            " Python byte code
 
-set wildignore+=node_modules                     " that Node, Node Node Node
-set wildignore+=npm-debug.log
-
 set wildignore+=*.orig                           " Merge resolution files
 
 set wildignore+=build
@@ -199,8 +194,8 @@ match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
 
 " Status line ----------------------------------------------------------------------------------
 
-let g:airline_powerline_fonts = 1
-let g:airline_theme = "solarpower"
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_colorscheme = 'solarized256'
 
 " Use sane regexes.
 nnoremap / /\v
@@ -295,21 +290,18 @@ augroup ft_coffee
     au!
 
     au FileType coffee setlocal shiftwidth=2 softtabstop=2
-    au BufRead,BufNewFile *.cson set ft=coffee
 augroup END
-
-" CSS, Sass, and Less
+" CSS and Less
 
 augroup ft_css
     au!
 
     au BufNewFile,BufRead *.less setlocal filetype=less
 
-    au Filetype sass,less,css setlocal omnifunc=csscomplete#CompleteCSS
-    au Filetype sass,less,css setlocal iskeyword+=-
+    au Filetype less,css setlocal omnifunc=csscomplete#CompleteCSS
+    au Filetype less,css setlocal iskeyword+=-
 
     au FileType css setlocal shiftwidth=2 softtabstop=2
-    au FileType sass setlocal shiftwidth=2 softtabstop=2
     au FileType less setlocal shiftwidth=4 softtabstop=4
 augroup END
 
@@ -347,14 +339,6 @@ augroup ft_gitcommit
     au!
 
     autocmd FileType gitcommit setlocal textwidth=70 spell nonumber norelativenumber
-augroup END
-
-" Go (golang)
-augroup ft_golang
-    au!
-
-    au FileType go setlocal listchars-=tab:▸\ 
-    au FileType go setlocal listchars+=tab:\ \ 
 augroup END
 
 " Javascript
@@ -555,10 +539,6 @@ inoremap <c-f> <c-x><c-f>
 
 map <leader>a :Ack! 
 
-if executable('ag')
-    let g:ackprg = 'ag --vimgrep'
-endif
-
 " Command-T
 let g:CommandTMaxHeight = 5
 let g:CommandTMatchWindowReverse = 1
@@ -595,10 +575,6 @@ let g:event_handler_attributes_complete = 0
 let g:rdfa_attributes_complete = 0
 let g:microdata_attributes_complete = 0
 let g:atia_attributes_complete = 0
-
-" NeoComplete
-
-let g:neocomplete#enable_at_startup = 1
 
 " NERDTree
 
@@ -650,7 +626,7 @@ let g:SuperTabDefaultCompletionType = "<c-p>"
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabLongestHighlight = 1
 
-
+"}}}
 " Syntastic
 
 let g:syntastic_enable_signs = 1
@@ -658,7 +634,6 @@ let g:syntastic_disabled_filetypes = ['html']
 let g:syntastic_stl_format = '[%E{Error 1/%e :%fe}%B{, }%W{Warning 1/%w :%fw}]'
 let g:syntastic_jsl_conf = '$HOME/.vim/jsl.conf'
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_go_checkers = [''] " we use a golang plugin which does this
 let g:syntastic_rst_checkers = ['rstcheck']
 
 " YankRing
