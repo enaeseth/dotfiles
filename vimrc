@@ -619,6 +619,7 @@ let NERDTreeIgnore=[
     \'db.db',
     \'\.sqlite3$',
     \'\.egg-info$',
+    \'node_modules$',
     \]
 
 let NERDTreeMinimalUI = 1
