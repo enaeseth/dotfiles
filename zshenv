@@ -13,6 +13,12 @@ function namedir {
     hash -d "$1=$2"
 }
 
+if [[ -d /usr/local/bin ]]; then
+    [[ "$PATH" =~ (^|:)"/usr/local/bin"(:|$) ]] || export PATH="/usr/local/bin:$PATH"
+fi
+
+: which yarn && export PATH="$(yarn global bin):$PATH"
+
 [[ -d "$HOME/Code" ]] && {
     export GOPATH="$HOME/Code"
     export PATH="${GOBIN:-${GOPATH}/bin}:$PATH"
