@@ -63,7 +63,7 @@ update:
 vundle: vim/bundle/.ready
 
 vim/bundle/.ready: vim/bundle/Vundle.vim
-	$(VIM) '+PluginInstall' '+qall'
+	[ "$$TERM" = unknown ] || $(VIM) '+PluginInstall' '+qall'
 	touch $@
 
 vim/bundle/Vundle.vim: vim/bundle
