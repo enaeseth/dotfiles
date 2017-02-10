@@ -17,7 +17,7 @@ if [[ -d /usr/local/bin ]]; then
     [[ "$PATH" =~ (^|:)"/usr/local/bin"(:|$) ]] || export PATH="/usr/local/bin:$PATH"
 fi
 
-: which yarn >/dev/null 2>/dev/null && export PATH="$(yarn global bin):$PATH"
+[[ -x /usr/bin/yarn || -x /usr/local/bin/yarn ]] && export PATH="$(yarn global bin):$PATH"
 
 [[ -d "$HOME/Code" ]] && {
     export GOPATH="$HOME/Code"
