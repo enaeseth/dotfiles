@@ -8,9 +8,12 @@ export EDITOR=vim
 : which mvim && export EDITOR='mvim -f'
 export VISUAL="$EDITOR"
 
-function namedir {
-    export "$1=$2"
-    hash -d "$1=$2"
+namedir() {
+    local name="$1"
+    local location="$2"
+
+    export "${name}=${location}"
+    hash -d "${name}=${location}"
 }
 
 if [[ -d /usr/local/bin ]]; then
