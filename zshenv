@@ -10,10 +10,24 @@ export VISUAL="$EDITOR"
 
 namedir() {
     local name="$1"
-    local location="$2"
 
-    export "${name}=${location}"
-    hash -d "${name}=${location}"
+    for loc in "${@:2}"; do
+        [[ -d "$loc" ]] && {
+            export "${name}=${loc}"
+            hash -d "${name}=${loc}"
+            break
+        }
+    done
+}
+
+set-gopath() {
+    for loc in "$@"; do
+        [[ -d "$loc" ]] && {
+            export GOPATH="$loc"
+            export PATH="${GOBIN:-${GOPATH}/bin}:$PATH"
+            break
+        }
+    done
 }
 
 if [[ -d /usr/local/bin ]]; then
@@ -22,14 +36,10 @@ fi
 
 [[ -x /usr/bin/yarn || -x /usr/local/bin/yarn ]] && export PATH="$(yarn global bin):$PATH"
 
-[[ -d "$HOME/Code" ]] && {
-    export GOPATH="$HOME/Code"
-    export PATH="${GOBIN:-${GOPATH}/bin}:$PATH"
-}
+namedir src "$HOME/src" "$HOME/Projects"
+namedir dots "$src/dotfiles" "$HOME/dotfiles" "$HOME/.dots"
 
-[ -d "$HOME/dotfiles" ] && namedir dots "$HOME/dotfiles"
-[ -d "$HOME/.dots" ] && namedir dots "$HOME/.dots"
-[ -d "$HOME/Projects/dotfiles" ] && namedir dots "$HOME/Projects/dotfiles"
+set-gopath "$src/golang" "$HOME/Code"
 
 [[ -s "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
 
