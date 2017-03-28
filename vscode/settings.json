@@ -1,0 +1,29 @@
+// Place your settings in this file to overwrite the default settings
+{
+    "files.autoSave": "onWindowChange",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/node_modules": true,
+        "**/*.sqlite3": true
+    },
+    "editor.renderLineHighlight": "gutter",
+    "editor.renderWhitespace": "boundary",
+    "files.associations": {
+        ".gqlconfig": "json5",
+        ".env": "shellscript"
+    },
+    "window.zoomLevel": 0,
+    "files.insertFinalNewline": true,
+    "workbench.statusBar.visible": true,
+    "go.formatTool": "gofmt",
+    "go.formatFlags": [
+        "-s"
+    ],
+    "workbench.colorTheme": "Visual Studio Dark",
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 100,
+    "editor.lineNumbers": "relative"
+}

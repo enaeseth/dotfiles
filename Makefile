@@ -1,6 +1,8 @@
-.PHONY: update vundle uninstall
+.PHONY: update vundle uninstall vscode-update vscode-save
 
 VIM ?= vim
+
+VSCODE := $(HOME)/Library/Application\ Support/Code/User
 
 INSTALLED := $(HOME)/.ackrc \
 	$(HOME)/.gitconfig \
@@ -16,7 +18,8 @@ INSTALLED := $(HOME)/.ackrc \
 	$(HOME)/.zpreztorc \
 	$(HOME)/.zprofile \
 	$(HOME)/.zshenv \
-	$(HOME)/.zshrc
+	$(HOME)/.zshrc \
+	$(VSCODE)/settings.json
 
 TARGETS := $(INSTALLED) \
 	vim/bundle \
@@ -31,6 +34,12 @@ TARGETS := $(INSTALLED) \
 
 all: $(TARGETS)
 
+vscode-save:
+	code --list-extensions | sort --ignore-case > vscode/extensions.txt
+
+vscode-update:
+	xargs -n 1 code --install-extension < vscode/extensions.txt
+
 vim/tmp/backup: vim/tmp
 vim/tmp/swap: vim/tmp
 vim/tmp/undo: vim/tmp
@@ -41,9 +50,16 @@ vim/%:
 local:
 	mkdir $@
 
+$(VSCODE):
+	mkdir -p "$@"
+
 $(HOME)/.%: %
 	@! [ -e $@ ] || [ -h $@ ] || ( echo >&2 '$@ exists'; exit 1 )
 	ln -fns $(realpath $<) $@
+
+$(VSCODE)/settings.json: vscode/settings.json $(VSCODE)
+	@[ ! -e "$@" ] || [ -h "$@" ] || ( echo >&2 '$@ exists'; exit 1 )
+	ln -fns $(realpath $<) "$@"
 
 local/email: local
 	@read -p 'What is your email address? ' email; echo "$$email" > $@
