@@ -1,4 +1,5 @@
 anseki.vscode-color
+antonkovalyov.soy
 bbenoist.vagrant
 casualjim.theme-desertex
 dandric.vscode-jq
