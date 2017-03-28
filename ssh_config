@@ -3,16 +3,11 @@ ControlPath /tmp/ssh_mux_%h_%p_%r
 ControlPersist 4h
 ServerAliveInterval 60
 
-Host *.thumbtack.com
-	IdentityFile ~/.ssh/id_rsa_thumbtack_debian
-	IdentityFile ~/.ssh/id_rsa_thumbtack_redhat
-Host *.internal
-	User eric
-	IdentityFile ~/.ssh/id_rsa_thumbtack_debian
-	IdentityFile ~/.ssh/id_rsa_thumbtack_redhat
-	ProxyCommand ssh boxy.thumbtack.com -W %h:%p
-Host amigos.lan
-	User root
-Host balancer
-    HostName 10.40.208.146
-    ControlPath none
+UseKeychain yes
+
+Host *.us-west-2.compute.internal
+	User ubuntu
+	ProxyCommand ssh union@playground.union.wtf -W %h:%p
+Host *.union.aws
+    User union
+	ProxyCommand ssh -o ControlPath=none union@playground.union.wtf -W %h:%p
