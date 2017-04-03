@@ -4,9 +4,10 @@ bbenoist.vagrant
 casualjim.theme-desertex
 dandric.vscode-jq
 donjayamanne.python
+eamodio.gitlens
 EditorConfig.EditorConfig
 eg2.tslint
-gcazaciuc.vscode-flow-ide
+flowtype.flow-for-vscode
 gerane.Theme-PastelsonDark
 kumar-harsh.graphql-for-vscode
 lukehoban.Go

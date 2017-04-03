@@ -2,6 +2,7 @@
 {
     "files.autoSave": "onWindowChange",
     "files.exclude": {
+        "**/bazel-*": true,
         "**/.git": true,
         "**/.svn": true,
         "**/.hg": true,
@@ -23,7 +24,8 @@
         "-s"
     ],
     "workbench.colorTheme": "Visual Studio Dark",
-    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrap": "off",
     "editor.wordWrapColumn": 100,
-    "editor.lineNumbers": "relative"
+    "editor.lineNumbers": "relative",
+    "gitlens.blame.annotation.activeLine": "off"
 }
