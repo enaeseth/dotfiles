@@ -8,6 +8,7 @@ eamodio.gitlens
 EditorConfig.EditorConfig
 eg2.tslint
 flowtype.flow-for-vscode
+formulahendry.auto-close-tag
 gerane.Theme-PastelsonDark
 kumar-harsh.graphql-for-vscode
 lukehoban.Go
@@ -21,4 +22,5 @@ timonwong.shellcheck
 tinaciousdesign.theme-tinaciousdesign
 vscodevim.vim
 wayou.vscode-todo-highlight
+zhuangtongfa.Material-theme
 zxh404.vscode-proto3
