@@ -10,6 +10,7 @@ INSTALLED := $(HOME)/.ackrc \
 	$(HOME)/.resources \
 	$(HOME)/.ssh/config \
 	$(HOME)/.tmux.conf \
+	$(HOME)/.config/nvim \
 	$(HOME)/.vim \
 	$(HOME)/.vimrc \
 	$(HOME)/.zlogin \
@@ -52,6 +53,11 @@ local:
 
 $(VSCODE):
 	mkdir -p "$@"
+
+$(HOME)/.config/%: %
+	@[ -d $(HOME)/.config ] || mkdir $(HOME)/.config
+	@! [ -e $@ ] || [ -h $@ ] || ( echo >&2 '$@ exists'; exit 1 )
+	ln -fns $(realpath $<) $@
 
 $(HOME)/.%: %
 	@! [ -e $@ ] || [ -h $@ ] || ( echo >&2 '$@ exists'; exit 1 )
