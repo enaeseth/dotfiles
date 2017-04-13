@@ -6,7 +6,16 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
-nnoremap <leader>c :CommandTFlush<cr>
+" Ale
+
+let g:ale_javascript_flow_use_global = 1
+
+" Airline
+let g:airline_powerline_fonts = 0
+let g:airline_theme = 'solarized'
+
+let g:airline#extensions#ale#error_symbol = '◈'
+let g:airline#extensions#ale#warning_symbol = '☇'
 
 " EditorConfig
 
@@ -98,16 +107,6 @@ let g:SuperTabDefaultCompletionType = "<c-p>"
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabLongestHighlight = 1
 
-
-" Syntastic
-
-let g:syntastic_enable_signs = 1
-let g:syntastic_disabled_filetypes = ['html']
-let g:syntastic_stl_format = '[%E{Error 1/%e :%fe}%B{, }%W{Warning 1/%w :%fw}]'
-let g:syntastic_jsl_conf = '$HOME/.vim/jsl.conf'
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_go_checkers = [''] " we use a golang plugin which does this
-let g:syntastic_rst_checkers = ['rstcheck']
 
 " YankRing
 
