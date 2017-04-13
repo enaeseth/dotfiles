@@ -57,7 +57,6 @@ au Filetype nerdtree setlocal nolist
 
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[
-    \'.vim$',
     \'\~$',
     \'.*\.py[co]$',
     \'__pycache__$',
