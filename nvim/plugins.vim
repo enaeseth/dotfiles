@@ -1,36 +1,3 @@
-call plug#begin('~/.local/share/nvim/plugged')
-
-" Color schemes
-
-Plug 'altercation/vim-colors-solarized'
-
-" Language support
-
-Plug 'pangloss/vim-javascript'
-Plug 'tpope/vim-markdown'
-Plug 'groenewege/vim-less'
-Plug 'flowtype/vim-flow', { 'for': 'javascript' }
-
-" Life improvement
-
-Plug 'junegunn/vim-easy-align'
-Plug 'ervandew/supertab'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'mileszs/ack.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-Plug 'sjl/gundo.vim'
-Plug 'spiiph/vim-space'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'vim-scripts/YankRing.vim'
-Plug 'cloudhead/neovim-fuzzy'
-Plug 'editorconfig/editorconfig-vim'
-
-call plug#end()
-
 " Ack
 
 map <leader>a :Ack! 
