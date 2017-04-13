@@ -23,7 +23,7 @@
     "go.formatFlags": [
         "-s"
     ],
-    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.colorTheme": "DesertEx",
     "editor.wordWrap": "off",
     "editor.wordWrapColumn": 100,
     "editor.lineNumbers": "relative",
