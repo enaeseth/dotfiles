@@ -1,6 +1,7 @@
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 let g:flow#enable = 0
+let g:deoplete#enable_at_startup = 1
 
 " Use locally installed flow
 let local_flow = finddir('node_modules', '.;') . '/.bin/flow'
@@ -43,7 +44,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'w0rp/ale'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'steelsojka/deoplete-flow'
 
 call plug#end()
