@@ -8,62 +8,43 @@
 set nocompatible
 filetype off
 
-" Vundle internals
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#rc()
-Plugin 'gmarik/Vundle.vim'
+call plug#begin('~/.vim/plugged')
 
 " Color schemes
 
-Plugin 'altercation/vim-colors-solarized'
+Plug 'altercation/vim-colors-solarized'
 
 " Language support
 
-Plugin 'Jinja'
-Plugin 'Keithbsmiley/swift.vim'
-Plugin 'StanAngeloff/php.vim'
-Plugin 'alunny/pegjs-vim'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'fatih/vim-go'
-Plugin 'guns/vim-clojure-static'
-Plugin 'hashivim/vim-terraform'
-Plugin 'hdima/python-syntax'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'jnwhiteh/vim-golang'
-Plugin 'jparise/vim-graphql'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mxw/vim-jsx'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'rodjek/vim-puppet'
-Plugin 'timcharper/textile.vim'
-Plugin 'tpope/vim-haml'
-Plugin 'tpope/vim-markdown'
-Plugin 'vim-ruby/vim-ruby'
+Plug 'flowtype/vim-flow'
+Plug 'fatih/vim-go'
+Plug 'groenewege/vim-less'
+Plug 'hashivim/vim-terraform'
+Plug 'hdima/python-syntax'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'jparise/vim-graphql'
+Plug 'mxw/vim-jsx'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
 
 " Life improvement
 
-Plugin 'Raimondi/delimitMate'
-Plugin 'YankRing.vim'
-Plugin 'ervandew/supertab'
-Plugin 'git://git.wincent.com/command-t'
-Plugin 'git@github.com:enaeseth/vim-powerline.git'
-Plugin 'groenewege/vim-less'
-Plugin 'henrik/vim-indexed-search'
-Plugin 'henrik/vim-qargs'
-Plugin 'michaeljsmith/vim-indent-object'
-Plugin 'mileszs/ack.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'sjl/gundo.vim'
-Plugin 'spiiph/vim-space'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'troydm/shellasync.vim'
+Plug 'Raimondi/delimitMate'
+Plug 'Shougo/denite.nvim'
+Plug 'ervandew/supertab'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'w0rp/ale'
+Plug 'sjl/gundo.vim'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+
+call plug#end()
 
 filetype plugin indent on
 
@@ -98,6 +79,7 @@ set shiftround                      " Round indents to multiple of shiftwidth
 set title                           " Update the (terminal) window title
 set linebreak                       " Break lines at opportune characters
 set nojoinspaces                    " Don't use two spaces between sentences (gq)
+set linespace=2                     " line-height
 set dictionary=/usr/share/dict/words
 
 " Time out on key codes but not mappings.
@@ -311,7 +293,7 @@ augroup ft_css
 
     au FileType css setlocal shiftwidth=2 softtabstop=2
     au FileType sass setlocal shiftwidth=2 softtabstop=2
-    au FileType less setlocal shiftwidth=4 softtabstop=4
+    au FileType less setlocal shiftwidth=2 softtabstop=4
 augroup END
 
 " HTML and HTMLDjango
@@ -363,7 +345,7 @@ augroup END
 augroup ft_javascript
     au!
 
-    au FileType javascript setlocal foldmethod=manual
+    au FileType javascript setlocal foldmethod=manual shiftwidth=2 softtabstop=2
 augroup END
 
 " Markdown
@@ -560,11 +542,30 @@ if executable('ag')
     let g:ackprg = 'ag --vimgrep'
 endif
 
-" Command-T
-let g:CommandTMaxHeight = 5
-let g:CommandTMatchWindowReverse = 1
+" Airline
 
-nnoremap <leader>c :CommandTFlush<cr>
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'solarized'
+
+let g:airline#extensions#ale#error_symbol = '◈'
+let g:airline#extensions#ale#warning_symbol = '☇'
+
+" ALE
+
+if executable($HOME . '/bin/eslint')
+    let g:ale_javascript_eslint_executable = $HOME . '/bin/eslint'
+endif
+if executable($HOME . '/bin/flow')
+    let g:ale_javascript_flow_executable = $HOME . '/bin/flow'
+endif
+
+" Flow
+
+let g:flow#enable = 0 " use ALE for this
+
+if executable($HOME . '/bin/flow')
+    let g:flow#flowpath = $HOME . '/bin/flow'
+endif
 
 " Fugitive
 
@@ -596,6 +597,11 @@ let g:event_handler_attributes_complete = 0
 let g:rdfa_attributes_complete = 0
 let g:microdata_attributes_complete = 0
 let g:atia_attributes_complete = 0
+
+" JavaScript
+
+let g:javascript_plugin_flow = 1
+let g:javascript_plugin_jsdoc = 1
 
 " NERDTree
 
@@ -644,28 +650,10 @@ autocmd VimEnter * call AutoFocusAwayFromNERDTree()
 
 " Supertab
 
-let g:SuperTabDefaultCompletionType = "<c-p>"
+let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabLongestHighlight = 1
 
-
-" Syntastic
-
-let g:syntastic_enable_signs = 1
-let g:syntastic_disabled_filetypes = ['html']
-let g:syntastic_stl_format = '[%E{Error 1/%e :%fe}%B{, }%W{Warning 1/%w :%fw}]'
-let g:syntastic_jsl_conf = '$HOME/.vim/jsl.conf'
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_go_checkers = [''] " we use a golang plugin which does this
-let g:syntastic_rst_checkers = ['rstcheck']
-
-" YankRing
-
-function! YRRunAfterMaps()
-    nnoremap Y :<C-U>YRYankCount 'y$'<CR>
-    omap <expr> L YRMapsExpression("", "$")
-    omap <expr> H YRMapsExpression("", "^")
-endfunction
 
 
 " Text objects ---------------------------------------------------------------------------------
