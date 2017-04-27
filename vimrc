@@ -16,8 +16,9 @@ Plug 'altercation/vim-colors-solarized'
 
 " Language support
 
-Plug 'flowtype/vim-flow'
+Plug 'duganchen/vim-soy'
 Plug 'fatih/vim-go'
+Plug 'flowtype/vim-flow'
 Plug 'groenewege/vim-less'
 Plug 'hashivim/vim-terraform'
 Plug 'hdima/python-syntax'
@@ -30,19 +31,22 @@ Plug 'pangloss/vim-javascript'
 " Life improvement
 
 Plug 'Raimondi/delimitMate'
-Plug 'Shougo/denite.nvim'
+Plug 'airblade/vim-gitgutter'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
-Plug 'w0rp/ale'
 Plug 'sjl/gundo.vim'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'w0rp/ale'
 
 call plug#end()
 
@@ -492,7 +496,7 @@ cnoremap <c-a> <home>
 cnoremap <c-e> <end>
 
 " Insert the directory of the current buffer in command line mode
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'>
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Formatting, TextMate-style
 nnoremap Q gqip
@@ -559,6 +563,11 @@ if executable($HOME . '/bin/flow')
     let g:ale_javascript_flow_executable = $HOME . '/bin/flow'
 endif
 
+" Ctrl-P
+
+nnoremap <leader>b :CtrlPBuffer<cr>
+nnoremap <leader>t :CtrlP<cr>
+
 " Flow
 
 let g:flow#enable = 0 " use ALE for this
@@ -566,6 +575,10 @@ let g:flow#enable = 0 " use ALE for this
 if executable($HOME . '/bin/flow')
     let g:flow#flowpath = $HOME . '/bin/flow'
 endif
+
+nnoremap <leader>f :FlowType<cr>
+nnoremap <leader>j :FlowJumpToDef<cr>
+nnoremap <leader>m :FlowMake<cr>
 
 " Fugitive
 
@@ -606,7 +619,7 @@ let g:javascript_plugin_jsdoc = 1
 " NERDTree
 
 nmap <leader>T :NERDTreeToggle<CR>
-nmap <leader>p :NERDTreeFind<CR>
+nmap <leader>w :NERDTreeFind<CR>
 
 au Filetype nerdtree setlocal nolist
 
@@ -654,7 +667,10 @@ let g:SuperTabDefaultCompletionType = 'context'
 let g:SuperTabLongestEnhanced = 1
 let g:SuperTabLongestHighlight = 1
 
+" yankstack
 
+nnoremap <leader>p <Plug>yankstack_substitute_older_paste
+nnoremap <leader>P <Plug>yankstack_substitute_newer_paste
 
 " Text objects ---------------------------------------------------------------------------------
 
