@@ -4,10 +4,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshenv"
 fi
 
-export EDITOR=vim
-: which mvim && export EDITOR='mvim -f'
-export VISUAL="$EDITOR"
-
 namedir() {
     local name="$1"
 
