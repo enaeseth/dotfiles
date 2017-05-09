@@ -669,6 +669,7 @@ let g:SuperTabLongestHighlight = 1
 
 " yankstack
 
+call yankstack#setup()
 nnoremap <leader>p <Plug>yankstack_substitute_older_paste
 nnoremap <leader>P <Plug>yankstack_substitute_newer_paste
 
