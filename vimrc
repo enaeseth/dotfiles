@@ -557,11 +557,13 @@ let g:airline#extensions#ale#warning_symbol = '☇'
 
 " ALE
 
-if executable($HOME . '/bin/eslint')
-    let g:ale_javascript_eslint_executable = $HOME . '/bin/eslint'
-endif
-if executable($HOME . '/bin/flow')
-    let g:ale_javascript_flow_executable = $HOME . '/bin/flow'
+if index(split(getcwd(), '/'), 'medium2') >= 0
+    if executable($HOME . '/bin/eslint')
+        let g:ale_javascript_eslint_executable = $HOME . '/bin/eslint'
+    endif
+    if executable($HOME . '/bin/flow')
+        let g:ale_javascript_flow_executable = $HOME . '/bin/flow'
+    endif
 endif
 
 " Ctrl-P
@@ -573,8 +575,10 @@ nnoremap <leader>b :CtrlPBuffer<cr>
 
 let g:flow#enable = 0 " use ALE for this
 
-if executable($HOME . '/bin/flow')
-    let g:flow#flowpath = $HOME . '/bin/flow'
+if index(split(getcwd(), '/'), 'medium2') >= 0
+    if executable($HOME . '/bin/flow')
+        let g:flow#flowpath = $HOME . '/bin/flow'
+    endif
 endif
 
 nnoremap <leader>f :FlowType<cr>
