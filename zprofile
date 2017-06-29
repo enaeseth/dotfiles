@@ -7,3 +7,10 @@ fi
 export EDITOR=vim
 : which mvim && export EDITOR='mvim -f'
 export VISUAL="$EDITOR"
+
+fbr() {
+  local branches branch
+  branches=$(git branch --sort=-committerdate -vv) &&
+    branch=$(echo "$branches" | fzf --height=20% +m) &&
+    git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
