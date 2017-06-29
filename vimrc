@@ -82,6 +82,7 @@ set autowrite                       " Write modified files on certain commands
 set shiftround                      " Round indents to multiple of shiftwidth
 set title                           " Update the (terminal) window title
 set linebreak                       " Break lines at opportune characters
+set nofoldenable                    " Please no
 set nojoinspaces                    " Don't use two spaces between sentences (gq)
 set linespace=2                     " line-height
 set dictionary=/usr/share/dict/words
