@@ -15,3 +15,5 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 # Load the Medium environment
 [ -f /opt/medium/env ] && source /opt/medium/env
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
