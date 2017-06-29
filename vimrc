@@ -566,8 +566,8 @@ endif
 
 " Ctrl-P
 
+nnoremap <leader>t :CtrlPMixed<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
-nnoremap <leader>t :CtrlP<cr>
 
 " Flow
 
