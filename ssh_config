@@ -4,8 +4,8 @@ ControlPersist 4h
 ServerAliveInterval 60
 
 Host *.us-west-2.compute.internal
-	User ubuntu
-	ProxyCommand ssh union@playground.union.wtf -W %h:%p
+    User ubuntu
+    ProxyCommand ssh union@playground.union.wtf -W %h:%p
 Host *.union.aws
     User union
-	ProxyCommand ssh -o ControlPath=none union@playground.union.wtf -W %h:%p
+    ProxyCommand ssh -o ControlPath=none union@playground.union.wtf -W %h:%p
