@@ -67,16 +67,26 @@ $(VSCODE)/settings.json: vscode/settings.json $(VSCODE)
 	@[ ! -e "$@" ] || [ -h "$@" ] || ( echo >&2 '$@ exists'; exit 1 )
 	ln -fns $(realpath $<) "$@"
 
+local/name: local
+	@read -p 'What is your name? ' name; echo "$$name" > $@
+
 local/email: local
 	@read -p 'What is your email address? ' email; echo "$$email" > $@
+
+local/github: local
+	@read -p 'What is your GitHub username? ' github; echo "$$github" > $@
 
 $(HOME)/.ssh/config: ssh_config
 	[ -d $(HOME)/.ssh ] || mkdir $(HOME)/.ssh
 	@! [ -e $@ ] || [ -h $@ ] || ( echo >&2 '$@ exists'; exit 1 )
 	ln -fns $(realpath $<) $@
 
-$(HOME)/.gitconfig: gitconfig local/email
-	sed "s/{email}/$$(cat local/email)/" $< > $@
+$(HOME)/.gitconfig: gitconfig local/name local/email local/github
+	sed \
+		-e "s/{name}/$$(cat local/name)/" \
+		-e "s/{email}/$$(cat local/email)/" \
+		-e "s/{github}/$$(cat local/github)/" \
+		$< > $@
 
 update:
 	$(VIM) '+PluginInstall!' '+qall'
