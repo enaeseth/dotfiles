@@ -147,7 +147,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set wrap
-set textwidth=80
+set textwidth=100
 set formatoptions+=tcrqnb
 set formatoptions-=o
 set colorcolumn=+1
