@@ -27,6 +27,7 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'prompt'
 
+zstyle ':prezto:module:git:alias' skip 'yes'
 zstyle ':prezto:module:git:status:ignore' submodules 'all'
 
 zstyle ':prezto:module:prompt' theme 'eric'
