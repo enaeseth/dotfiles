@@ -16,6 +16,7 @@ Plug 'altercation/vim-colors-solarized'
 
 " Language support
 
+Plug 'derekwyatt/vim-scala'
 Plug 'duganchen/vim-soy'
 Plug 'fatih/vim-go'
 Plug 'flowtype/vim-flow'
@@ -34,6 +35,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
+Plug 'ensime/ensime-vim'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
@@ -351,6 +353,10 @@ augroup ft_javascript
     au!
 
     au FileType javascript setlocal foldmethod=manual shiftwidth=2 softtabstop=2
+
+    au FileType javascript nnoremap <buffer> <leader>f :FlowType<cr>
+    au FileType javascript nnoremap <buffer> <leader>j :FlowJumpToDef<cr>
+    au FileType javascript nnoremap <buffer> <leader>m :FlowMake<cr>
 augroup END
 
 " Markdown
@@ -436,6 +442,20 @@ augroup END
 augroup ft_ruby
     au!
     au Filetype ruby setlocal foldmethod=manual shiftwidth=2 softtabstop=2
+augroup END
+
+" Scala
+
+augroup ft_scala
+    au!
+
+    autocmd FileType scala
+        \ nnoremap <buffer> <silent> <leader>f :EnType<CR> |
+        \ xnoremap <buffer> <silent> <leader>f :EnType selection<CR> |
+        \ nnoremap <buffer> <silent> <leader>j :EnDeclaration<CR> |
+        \ nnoremap <buffer> <silent> <leader>J :EnDeclarationSplit<CR> |
+        \ nnoremap <buffer> <silent> <leader>m :EnTypeCheck<CR> |
+        \ nnoremap <buffer> <silent> <leader>r :EnRename<CR> |
 augroup END
 
 " Vim
@@ -571,6 +591,10 @@ endif
 nnoremap <leader>t :CtrlPMixed<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
 
+" Ensime
+
+let $ENSIME_VIM_DEBUG = 1
+
 " Flow
 
 let g:flow#enable = 0 " use ALE for this
@@ -580,10 +604,6 @@ if index(split(getcwd(), '/'), 'medium2') >= 0
         let g:flow#flowpath = $HOME . '/bin/flow'
     endif
 endif
-
-nnoremap <leader>f :FlowType<cr>
-nnoremap <leader>j :FlowJumpToDef<cr>
-nnoremap <leader>m :FlowMake<cr>
 
 " Fugitive
 
