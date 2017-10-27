@@ -9,7 +9,7 @@
  '(frame-background-mode (quote dark))
  '(package-selected-packages
    (quote
-    (ag subatomic-theme gruvbox-theme dashboard dashoard yaml-mode syslog-mode rxjs-mode nginx-mode apache-mode company-ansible ansible-doc ansible json-navigator json-mode evil-god-state god-mode atom-one-dark-theme f ensime linum-relative evil-indent-plus which-key spaceline-all-the-icons all-the-icons flycheck rebase-mode magit-blame spaceline editorconfig markdown-mode evil-indent-textobject evil-surround evil-leader use-package evil-visual-mark-mode color-theme-solarized))))
+    (diff-hl ag subatomic-theme gruvbox-theme dashboard dashoard yaml-mode syslog-mode rxjs-mode nginx-mode apache-mode company-ansible ansible-doc ansible json-navigator json-mode evil-god-state god-mode atom-one-dark-theme f ensime linum-relative evil-indent-plus which-key spaceline-all-the-icons all-the-icons flycheck rebase-mode magit-blame spaceline editorconfig markdown-mode evil-indent-textobject evil-surround evil-leader use-package evil-visual-mark-mode color-theme-solarized))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

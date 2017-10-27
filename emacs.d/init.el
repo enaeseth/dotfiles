@@ -88,6 +88,10 @@
 
 (use-package better-defaults)
 
+;; diff-hl
+
+(use-package diff-hl)
+
 ;; diminish
 
 (use-package diminish)
