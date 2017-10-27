@@ -66,9 +66,9 @@
   :config
   (global-anzu-mode +1))
 
-(use-package atom-one-dark-theme
-  :config
-  (load-theme 'atom-one-dark 'no-confirm))
+;; atom-one-dark-theme
+
+(use-package atom-one-dark-theme)
 
 ;; company
 
@@ -183,6 +183,12 @@
   (define-key global-map (kbd "M-<escape>") 'god-mode)
   (define-key global-map (kbd "C-M-<escape>") 'god-local-mode)
   (evil-leader/set-key "SPC" 'evil-execute-in-god-state))
+
+;; gruvbox
+
+(use-package gruvbox
+  :config
+  (load-theme 'gruvbox-dark-medium 'no-confirm))
 
 ;; helm
 
