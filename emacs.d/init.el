@@ -221,15 +221,15 @@
 ;; magit
 
 (use-package magit
-  :commands magit-get-top-dir
-	 ("C-c C-g l" . magit-file-log))
   :config
-  
-  (use-package magit-blame
-    :bind ("C-c C-g b" . magit-blame-mode))
-
-  ; git rebase -i
-  (require 'rebase-mode))
+  (evil-leader/set-key
+    "gb" 'magit-blame
+    "gB" 'magit-blame-quit
+    "gdu" 'magit-diff-unstaged
+    "gds" 'magit-diff-staged
+    "gl" 'magit-log-buffer-file
+    "gL" 'magit-log-current
+    "gs" 'magit-status))
 
 ;; powerline
 
