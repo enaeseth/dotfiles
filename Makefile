@@ -5,6 +5,7 @@ VIM ?= vim
 VSCODE := $(HOME)/Library/Application\ Support/Code/User
 
 INSTALLED := $(HOME)/.ackrc \
+	$(HOME)/.emacs.d \
 	$(HOME)/.gitconfig \
 	$(HOME)/.inputrc \
 	$(HOME)/.resources \
