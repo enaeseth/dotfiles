@@ -359,3 +359,6 @@
 (evil-leader/set-key
   "rd" 'run-dig
   "rp" 'run-python)
+
+(evil-leader/set-key
+  "ti" 'indent-region)
