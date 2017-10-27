@@ -36,7 +36,7 @@
 ;;; --------------------------------------------------------------------------------
 ;;; General settings
 
-(set-frame-font "SF Mono 13" nil t)
+(ignore-errors (set-frame-font "SF Mono 13" nil t))
 
 (setq create-lockfiles nil)
 (setq electric-indent-inhibit t)
@@ -186,7 +186,7 @@
 
 ;; gruvbox
 
-(use-package gruvbox
+(use-package gruvbox-theme
   :config
   (load-theme 'gruvbox-dark-medium 'no-confirm))
 
