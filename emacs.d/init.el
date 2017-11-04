@@ -74,6 +74,8 @@
 
 (use-package company
   :config (add-hook 'prog-mode-hook #'(lambda () (company-mode))))
+(use-package company-flow
+  :config (add-to-list 'company-backends 'company-flow))
 
 ;; dashboard
 
@@ -99,7 +101,13 @@
 ;; flycheck
 
 (use-package flycheck
-  :init (global-flycheck-mode))
+  :config
+  (global-flycheck-mode))
+(use-package flycheck-flow
+  :config
+  (flycheck-add-mode 'javascript-flow 'flow-minor-mode)
+  (flycheck-add-mode 'javascript-eslint 'flow-minor-mode)
+  (flycheck-add-next-checker 'javascript-flow 'javascript-eslint))
 
 ;; editorconfig
 
@@ -184,6 +192,11 @@
   (define-key global-map (kbd "C-M-<escape>") 'god-local-mode)
   (evil-leader/set-key "SPC" 'evil-execute-in-god-state))
 
+;; golang
+
+(use-package go-mode)
+(use-package company-go)
+
 ;; gruvbox
 
 (use-package gruvbox-theme
@@ -194,6 +207,12 @@
 
 (use-package helm
   :bind (("M-x" . helm-M-x)))
+
+;; javascript
+
+(use-package flow-minor-mode
+  :config
+  (add-hook 'js2-mode-hook 'flow-minor-enable-automatically))
 
 ;; json
 
@@ -307,7 +326,7 @@
 
 (evil-leader/set-key
   "mca" 'apache-mode
-  "mcs" 'syslog-mode)
+  "mcn" 'nginx-mode)
 
 ;; markdown
 
