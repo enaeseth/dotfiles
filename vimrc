@@ -35,7 +35,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'airblade/vim-gitgutter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
-Plug 'ensime/ensime-vim'
 Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
@@ -590,10 +589,6 @@ endif
 
 nnoremap <leader>t :CtrlPMixed<cr>
 nnoremap <leader>b :CtrlPBuffer<cr>
-
-" Ensime
-
-let $ENSIME_VIM_DEBUG = 1
 
 " Flow
 
