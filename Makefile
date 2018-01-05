@@ -1,4 +1,4 @@
-.PHONY: update vundle uninstall vscode-update vscode-save
+.PHONY: local update vundle uninstall vscode-update vscode-save
 
 VIM ?= vim
 
@@ -24,9 +24,9 @@ INSTALLED := $(HOME)/.ackrc \
 	$(VSCODE)/settings.json
 
 TARGETS := $(INSTALLED) \
+	local \
 	vim/bundle \
 	vim/bundle/Vundle.vim \
-	vim/tmp \
 	vim/tmp/backup \
 	vim/tmp/swap \
 	vim/tmp/undo \
@@ -47,10 +47,10 @@ vim/tmp/swap: vim/tmp
 vim/tmp/undo: vim/tmp
 
 vim/%:
-	mkdir $@
+	@mkdir -p $@
 
 local:
-	mkdir $@
+	@$(MAKE) -C $@
 
 $(VSCODE):
 	mkdir -p "$@"
@@ -68,14 +68,6 @@ $(VSCODE)/settings.json: vscode/settings.json $(VSCODE)
 	@[ ! -e "$@" ] || [ -h "$@" ] || ( echo >&2 '$@ exists'; exit 1 )
 	ln -fns $(realpath $<) "$@"
 
-local/name: local
-	@read -p 'What is your name? ' name; echo "$$name" > $@
-
-local/email: local
-	@read -p 'What is your email address? ' email; echo "$$email" > $@
-
-local/github: local
-	@read -p 'What is your GitHub username? ' github; echo "$$github" > $@
 
 $(HOME)/.ssh/config: ssh_config
 	[ -d $(HOME)/.ssh ] || mkdir $(HOME)/.ssh
