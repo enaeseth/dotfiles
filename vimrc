@@ -580,6 +580,10 @@ let g:airline#extensions#ale#warning_symbol = '☇'
 
 " ALE
 
+let g:ale_linters = {
+\   'javascript': ['eslint', 'flow'],
+\}
+
 if index(split(getcwd(), '/'), 'medium2') >= 0
     if executable($HOME . '/bin/eslint')
         let g:ale_javascript_eslint_executable = $HOME . '/bin/eslint'
