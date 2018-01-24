@@ -16,6 +16,7 @@ Plug 'altercation/vim-colors-solarized'
 
 " Language support
 
+Plug 'chr4/nginx.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'duganchen/vim-soy'
 Plug 'fatih/vim-go'
