@@ -44,6 +44,10 @@
 (setq inhibit-splash-screen t)
 (setq lexical-binding t)
 (setq make-backup-files nil)
+(setq auto-save-default nil)
+(setq sentence-end-double-space nil)
+
+(add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
 
 (add-hook 'prog-mode-hook 'linum-mode)
 (add-hook 'org-mode-hook 'linum-mode)
@@ -118,8 +122,7 @@
 
 ;; ensime
 
-(use-package ensime
-  :pin melpa-stable)
+(use-package ensime)
 
 ;; eshell
 
@@ -259,21 +262,6 @@
 (use-package request
   :commands (request))
 
-;; solarized
-
-;; (use-package solarized-theme
-;;   :init
-;;   (setq solarized-high-contrast-mode-line t
-;;         solarized-use-less-bold t
-;;         solarized-emphasize-indicators nil
-;;         solarized-scale-org-headlines nil
-;;         x-underline-at-descent-line t)
-  
-;;   (add-hook 'after-make-frame-functions
-;;             (lambda (frame)
-;;               (set-frame-parameter frame 'background-mode mode)))
-;;   :config (setq color-theme-is-global t))
-
 ;; spaceline
 
 (use-package spaceline-config
@@ -343,6 +331,14 @@
   :mode "\\.log$")
 (evil-leader/set-key
   "ml" 'syslog-mode)
+
+;; scala
+
+(use-package scala-mode
+  :interpreter
+  ("scala" . scala-mode)
+  :config
+  (setq-default scala-indent:use-javadoc-style t))
 
 ;; yaml
 
