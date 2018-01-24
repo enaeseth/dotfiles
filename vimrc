@@ -481,6 +481,9 @@ augroup END
 nnoremap <leader>ev <C-w>s<C-w>j<C-w>L:e $MYVIMRC<cr>
 
 " Convenience mappings -------------------------------------------------------------------------
+"
+" Redraw the screen
+nnoremap <leader>r :redraw!<cr>
 
 " Delete but don't yank
 noremap D "_d
