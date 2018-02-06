@@ -74,7 +74,7 @@ $(HOME)/.ssh/config: ssh_config
 	@! [ -e $@ ] || [ -h $@ ] || ( echo >&2 '$@ exists'; exit 1 )
 	ln -fns $(realpath $<) $@
 
-$(HOME)/.gitconfig: gitconfig local/name local/email local/github
+$(HOME)/.gitconfig: gitconfig local
 	sed \
 		-e "s/{name}/$$(cat local/name)/" \
 		-e "s/{email}/$$(cat local/email)/" \
