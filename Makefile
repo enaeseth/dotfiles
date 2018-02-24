@@ -9,6 +9,7 @@ INSTALLED := $(HOME)/.ackrc \
 	$(HOME)/.gitconfig \
 	$(HOME)/.inputrc \
 	$(HOME)/.resources \
+	$(HOME)/.spacemacs \
 	$(HOME)/.ssh/config \
 	$(HOME)/.tmux.conf \
 	$(HOME)/.config/nvim \
@@ -24,6 +25,7 @@ INSTALLED := $(HOME)/.ackrc \
 	$(VSCODE)/settings.json
 
 TARGETS := $(INSTALLED) \
+	emacs.d \
 	local \
 	vim/bundle \
 	vim/bundle/Vundle.vim \
@@ -80,6 +82,9 @@ $(HOME)/.gitconfig: gitconfig local
 		-e "s/{email}/$$(cat local/email)/" \
 		-e "s/{github}/$$(cat local/github)/" \
 		$< > $@
+
+emacs.d:
+	git clone https://github.com/syl20bnr/spacemacs $@
 
 update:
 	$(VIM) '+PluginInstall!' '+qall'
