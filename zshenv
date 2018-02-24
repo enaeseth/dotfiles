@@ -35,7 +35,7 @@ fi
 namedir src "$HOME/src" "$HOME/Projects"
 namedir dots "$src/dotfiles" "$HOME/dotfiles" "$HOME/.dots"
 
-set-gopath "$src/golang" "$HOME/Code"
+set-gopath "$HOME/go"
 
 [[ -s "$HOME/.zshenv.local" ]] && source "$HOME/.zshenv.local"
 
