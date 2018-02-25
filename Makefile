@@ -9,7 +9,7 @@ INSTALLED := $(HOME)/.ackrc \
 	$(HOME)/.gitconfig \
 	$(HOME)/.inputrc \
 	$(HOME)/.resources \
-	$(HOME)/.spacemacs \
+	$(HOME)/.spacemacs.d \
 	$(HOME)/.ssh/config \
 	$(HOME)/.tmux.conf \
 	$(HOME)/.config/nvim \
