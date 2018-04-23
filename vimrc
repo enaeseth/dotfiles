@@ -16,6 +16,7 @@ Plug 'altercation/vim-colors-solarized'
 
 " Language support
 
+Plug 'Quramy/tsuquyomi'
 Plug 'chr4/nginx.vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'duganchen/vim-soy'
@@ -26,9 +27,13 @@ Plug 'hashivim/vim-terraform'
 Plug 'hdima/python-syntax'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'jparise/vim-graphql'
+Plug 'leafgarland/typescript-vim'
 Plug 'mxw/vim-jsx'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue'] }
 
 " Life improvement
 
@@ -348,15 +353,21 @@ augroup ft_golang
 augroup END
 
 " Javascript
-
+"
+let g:prettier#autoformat = 0
+let g:prettier#quickfix_enabled = 0
 augroup ft_javascript
     au!
 
     au FileType javascript setlocal foldmethod=manual shiftwidth=2 softtabstop=2
+    au FileType json setlocal shiftwidth=2 softtabstop=2
+    au FileType typescript setlocal shiftwidth=2 softtabstop=2
 
     au FileType javascript nnoremap <buffer> <leader>f :FlowType<cr>
     au FileType javascript nnoremap <buffer> <leader>j :FlowJumpToDef<cr>
     au FileType javascript nnoremap <buffer> <leader>m :FlowMake<cr>
+
+    au BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
 augroup END
 
 " Markdown
@@ -805,7 +816,7 @@ nnoremap <leader>dw :call ToggleDiffWhitespace()<CR>
 " Environments (GUI/Console) -------------------------------------------------------------------
 
 if has('gui_running')
-    set guifont=Menlo\ for\ Powerline:h12
+    set guifont=SF\ Mono:h12
 
     " Remove all the UI cruft
     set go-=T

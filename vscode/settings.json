@@ -23,9 +23,16 @@
     "go.formatFlags": [
         "-s"
     ],
-    "workbench.colorTheme": "DesertEx",
+    "workbench.colorTheme": "Better Solarized Dark",
     "editor.wordWrap": "off",
     "editor.wordWrapColumn": 100,
     "editor.lineNumbers": "relative",
-    "gitlens.blame.annotation.activeLine": "off"
+    "gitlens.advanced.messages": {
+        "suppressShowKeyBindingsNotice": true
+    },
+    "editor.fontFamily": "SF Mono, Menlo, Monaco, 'Courier New', monospace",
+    "editor.rulers": [
+        100
+    ],
+    "editor.minimap.enabled": false
 }
