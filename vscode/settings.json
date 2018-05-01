@@ -34,5 +34,25 @@
     "editor.rulers": [
         100
     ],
-    "editor.minimap.enabled": false
+    "editor.minimap.enabled": false,
+    "gitlens.keymap": "alternate",
+    "gitlens.codeLens.enabled": false,
+    "flow.useNPMPackagedFlow": true,
+    "todohighlight.keywords": [
+        {
+            "text": "TODO",
+            "color": "#268BD2",
+            "backgroundColor": "rgba(0, 0, 0, 0)"
+        },
+        {
+            "text": "FIXME",
+            "backgroundColor": "#B58900",
+            "color": "#002B36"
+        },
+        {
+            "text": "XXX",
+            "color": "#CB4B16",
+            "backgroundColor": "rgba(0, 0, 0, 0)"
+        }
+    ]
 }

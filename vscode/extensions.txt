@@ -3,6 +3,7 @@ eamodio.gitlens
 EditorConfig.EditorConfig
 eg2.tslint
 esbenp.prettier-vscode
+flowtype.flow-for-vscode
 ginfuru.ginfuru-better-solarized-dark-theme
 lukehoban.Go
 ms-python.python
@@ -11,4 +12,5 @@ PeterJausovec.vscode-docker
 redhat.java
 redhat.vscode-yaml
 vscodevim.vim
+wayou.vscode-todo-highlight
 zhuangtongfa.Material-theme
