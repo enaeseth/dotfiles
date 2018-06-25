@@ -54,5 +54,6 @@
             "color": "#CB4B16",
             "backgroundColor": "rgba(0, 0, 0, 0)"
         }
-    ]
+    ],
+    "gitlens.historyExplorer.enabled": true
 }

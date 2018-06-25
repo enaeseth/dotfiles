@@ -367,7 +367,9 @@ augroup ft_javascript
     au FileType javascript nnoremap <buffer> <leader>j :FlowJumpToDef<cr>
     au FileType javascript nnoremap <buffer> <leader>m :FlowMake<cr>
 
-    au BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+    if index(split(getcwd(), '/'), 'medium2') < 0
+        au BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue PrettierAsync
+    endif
 augroup END
 
 " Markdown
